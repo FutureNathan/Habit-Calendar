@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Example of Text Block Over Image</title>
+    <link href="{{url_for('static',filename = 'css/star-style.css')}}" rel="stylesheet">
+
+    <script>
+        k = 0;
+        function myFunction() {
+            console.log(k);
+            if (k == 0) {
+                document.getElementById("yolo").src = "{{url_for('static',filename = 'assets/star_white.png')}}"
+                k = 1;
+            }
+            else {
+                document.getElementById("yolo").src = "{{url_for('static',filename = 'assets/star_gold.png')}}"
+                k = 0;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="star" onclick="myFunction()">
+        <img src="{{url_for('static',filename = 'assets/star_gold.png')}}" alt="Girl in a jacket" id="yolo">
+        <div class="star-text">1</div>
+    </div>
+    <div class="star" onclick="myFunction()">
+        <img src="{{url_for('static',filename = 'assets/star_gold.png')}}" alt="Girl in a jacket" id="yolo">
+        <div class="star-text">25</div>
+    </div>
+
+    <table>
+        <tr>
+            <th>Jan</th>
+            <th>Feb</th>
+            <th>Mar</th>
+        </tr>
+        <tr>
+            <td>
+                <div class="star" onclick="myFunction()">
+                    <img src="{{url_for('static',filename = 'assets/star_gold.png')}}" alt="Girl in a jacket" id="yolo">
+                    <div class="star-text">1</div>
+                </div>
+            </td>
+            <td>
+                <div class="star" onclick="myFunction()">
+                    <img src="{{url_for('static',filename = 'assets/star_gold.png')}}" alt="Girl in a jacket" id="yolo">
+                    <div class="star-text">1</div>
+                </div>
+            </td>
+            <td>
+                <div class="star" onclick="myFunction()">
+                    <img src="{{url_for('static',filename = 'assets/star_gold.png')}}" alt="Girl in a jacket" id="yolo">
+                    <div class="star-text">1</div>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <div class="star" onclick="myFunction()">
+                    <img src="{{url_for('static',filename = 'assets/star_gold.png')}}" alt="Girl in a jacket" id="yolo">
+                    <div class="star-text">2</div>
+                </div>
+            </td>
+            <td>
+                <div class="star" onclick="myFunction()">
+                    <img src="{{url_for('static',filename = 'assets/star_gold.png')}}" alt="Girl in a jacket" id="yolo">
+                    <div class="star-text">2</div>
+                </div>
+            </td>
+            <td>
+                <div class="star" onclick="myFunction()">
+                    <img src="{{url_for('static',filename = 'assets/star_gold.png')}}" alt="Girl in a jacket" id="yolo">
+                    <div class="star-text">2</div>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+</body>

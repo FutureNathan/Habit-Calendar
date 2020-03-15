@@ -5,7 +5,6 @@ from werkzeug.datastructures import ImmutableMultiDict
 
 
 app = Flask(__name__)
-db = Control()
 
 app.config['SECRET_KEY'] = 'secret!'
 
@@ -15,7 +14,9 @@ socketio = SocketIO(app)
 @app.route('/')
 def index():
     return "hello"
-
+@app.route('/test')
+def test():
+    return render_template("test.html")
 
 if __name__ == '__main__':
     # app.run(host='0.0.0.0',port = 80, threaded=True, debug=True)

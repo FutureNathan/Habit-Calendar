@@ -1,0 +1,20 @@
+.star {
+    position: relative;
+    display: inline-block;
+    /* Make the width of box same as image */
+}
+
+.star .star-text {
+    position: absolute;
+    z-index: 999;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    top: 23%;
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    color: rgb(0, 0, 0);
+    width: 60%;
+    /* Set the width of the positioned div */
+}
