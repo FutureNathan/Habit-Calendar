@@ -6,6 +6,8 @@
     <title>Example of Text Block Over Image</title>
     <link href="{{url_for('static',filename = 'css/star-style.css')}}" rel="stylesheet">
 
+    <script type="text/javascript" src="{{url_for('static',filename = 'js/moment.min.js')}}"></script>
+
     <script>
         k = 0;
         function myFunction() {
@@ -20,19 +22,22 @@
             }
         }
     </script>
+
+    <script>
+
+        console.log(moment.months());
+        months = moment.months();
+        //var a  = moment([2021, 1]).daysInMonth();
+        //console.log(a)
+        year = 2020
+        for (i = 0; i < months.length; i++) {
+            console.log(months[i] + ":" + moment([year, i]).daysInMonth());
+        }
+    </script>
 </head>
 
 <body>
-    <div class="star" onclick="myFunction()">
-        <img src="{{url_for('static',filename = 'assets/star_gold.png')}}" alt="Girl in a jacket" id="yolo">
-        <div class="star-text">1</div>
-    </div>
-    <div class="star" onclick="myFunction()">
-        <img src="{{url_for('static',filename = 'assets/star_gold.png')}}" alt="Girl in a jacket" id="yolo">
-        <div class="star-text">25</div>
-    </div>
-
-    <table>
+    <table style="transform:rotate(270deg);">
         <tr>
             <th>Jan</th>
             <th>Feb</th>

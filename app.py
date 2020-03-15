@@ -14,9 +14,14 @@ socketio = SocketIO(app)
 @app.route('/')
 def index():
     return "hello"
+
 @app.route('/test')
 def test():
     return render_template("test.html")
+
+@app.route('/calander')
+def calender():
+    return render_template("calenderTest.html")
 
 if __name__ == '__main__':
     # app.run(host='0.0.0.0',port = 80, threaded=True, debug=True)
