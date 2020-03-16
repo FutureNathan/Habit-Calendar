@@ -33,7 +33,7 @@ function fillCal(data, year) {
 
     var elements = document.getElementsByClassName("star");
 
-    var myFunction = function () {
+    var daySelector = function () {
         var id = this.getElementsByClassName('img-cls')[0].id;
         //console.log(id);
         var star_val = document.getElementById(id).getAttribute("value");
@@ -50,22 +50,22 @@ function fillCal(data, year) {
 
         console.log("today: " + today);
 
-        if (id === today) {
-            if (star_val === "true") {
-                document.getElementById(id).src = '/static/assets/star_white.png';
-                document.getElementById(id).setAttribute("value", "false");
-                console.log("no")
-            }
-            else {
-                document.getElementById(id).src = '/static/assets/star_gold.png';
-                document.getElementById(id).setAttribute("value", "true");
-                console.log("yes")
-            }
+
+        if (star_val === "true") {
+            document.getElementById(id).src = '/static/assets/star_white.png';
+            document.getElementById(id).setAttribute("value", "false");
+            console.log("no")
         }
+        else {
+            document.getElementById(id).src = '/static/assets/star_gold.png';
+            document.getElementById(id).setAttribute("value", "true");
+            console.log("yes")
+        }
+
     };
 
     for (var i = 0; i < elements.length; i++) {
-        elements[i].addEventListener('click', myFunction, false);
+        elements[i].addEventListener('click', daySelector, false);
     }
 
 

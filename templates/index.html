@@ -7,12 +7,13 @@
     <link href="{{url_for('static',filename = 'css/star-style.css')}}" rel="stylesheet">
     <link href="{{url_for('static',filename = 'css/calendar-style.css')}}" rel="stylesheet">
 
+    <link href="{{url_for('static',filename = 'css/loading-bar.css')}}" rel="stylesheet">
 
     <link rel="icon" href="{{url_for('static',filename = 'assets/favicon.PNG')}}" sizes="16x16">
 
     <script type="text/javascript" src="{{url_for('static',filename = 'js/moment.min.js')}}"></script>
     <script type="text/javascript" src="{{url_for('static',filename = 'js/calendar.js')}}"></script>
-
+    <script type="text/javascript" src="{{url_for('static',filename = 'js/loading-bar.js')}}"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // your code here
@@ -20,15 +21,66 @@
             year = 2020
             fillCal(data, year);
         }, false);
+        var i = 0;
+        total = 10;
+        function next() {
+            if (i <= total)
+                i = i + 1
+
+            p_text = i + "/" + total;
+
+            var bar2 = document.getElementById('prog').ldBar;
+            perc = parseFloat(i / total) * 100;
+            if (i <= total) {
+                document.getElementById("prog-text-val").style.color = '#08CCF6';
+                document.getElementsByClassName("mainline")[0].setAttribute("stroke", "#08CCF6");
+                console.log(perc);
+                bar2.set(perc);
+                document.getElementsByClassName("prog-text")[0].innerText = p_text;
+                if (i == total) {
+                    document.getElementById("prog-text-val").style.color = '#FFC700';
+                    document.getElementsByClassName("mainline")[0].setAttribute("stroke", "#FFC700");
+                }
+            }
+        }
+        function back() {
+            if (i > 0)
+                i = i - 1
+
+            p_text = i + "/" + total;
+
+            var bar2 = document.getElementById('prog').ldBar;
+            perc = parseFloat(i / total) * 100;
+            if (i >= 0) {
+                console.log(perc);
+                bar2.set(perc);
+                document.getElementsByClassName("prog-text")[0].innerText = p_text;
+            }
+        }
     </script>
 </head>
 
 <body>
-    <div class="calendar">
-        <table id="calender-table" cellspacing="11">
+    <div class="header" style="width:100%">
+        <img src="/static/assets/Back Arrow.png" id="left_btn" style="display: inline" onclick="back()">
+        <H1 style="display: inline">Good Habits</H1>
+
+        <div class="prog-body">
+            <div id="prog" class="ldBar label-center" data-preset="circle" data-stroke="#08CCF6">
+                <div class="prog-text" id='prog-text-val'>0/10</div>
+            </div>
+            <!-- <div class="prog-text" id='prog-text-val'>0/10</div> -->
+        </div>
+
+        <img src="/static/assets/Back Arrow.png" style="transform: rotate(180deg); display: inline" id="right_btn"
+            onclick="next()">
+    </div>
+    <div class="calendar center">
+        <table id="calender-table">
 
         </table>
     </div>
+
 </body>
 
 </html>

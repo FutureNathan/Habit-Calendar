@@ -4,20 +4,6 @@ body{
     background-color: black;
     width: 100%;
 }
-
-.center {
-    margin: auto;
-    width: 50%;
-    padding: 10px;
-  }
-
-.calendar {
-    cursor: pointer;
-    max-width: 1080;
-    max-height: 1920;
-    border-collapse: collapse;
-}
-
 th{
     color: #08CCF6;
     font-family: Roboto-thin;
@@ -31,4 +17,33 @@ td{
 
 tr{
     margin-top:-10px;
+}
+
+.center {
+    margin: auto;
+    width: 98%;
+    padding: 10px;
+  }
+
+.calendar{
+    cursor: pointer;
+    max-width: 1080;
+    max-height: 1920;
+    border-collapse: collapse;
+}
+.header{
+    color: #08CCF6;
+    font-family: Roboto-thin;
+    font-size: 40px;
+}
+
+
+.ldBar path.mainline{
+    stroke-width: 10;
+    stroke-linecap: round;
+}
+.ldBar path.baseline {
+    stroke-width: 10;
+    stroke: rgb(39, 38, 38);
+    stroke-linecap: round;
 }
