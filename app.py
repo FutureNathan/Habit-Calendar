@@ -13,7 +13,7 @@ socketio = SocketIO(app)
 
 @app.route('/')
 def index():
-    return "hello"
+    return render_template('index.html')
 
 @app.route('/test')
 def test():

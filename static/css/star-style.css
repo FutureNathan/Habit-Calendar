@@ -1,7 +1,16 @@
 .star {
     position: relative;
     display: inline-block;
+    padding-bottom: 45px;
+    padding-right: 65px;
     /* Make the width of box same as image */
+}
+
+.img-cls{
+    width:64px;
+    height:64px;
+    padding-bottom: 50px;
+    position: absolute;
 }
 
 .star .star-text {
@@ -9,12 +18,12 @@
     z-index: 999;
     margin: 0 auto;
     left: 0;
-    right: 0;
+    right: 3%;
     text-align: center;
-    top: 23%;
+    top: 38%;
     font-family: Arial, sans-serif;
     font-size: 24px;
     color: rgb(0, 0, 0);
     width: 60%;
-    /* Set the width of the positioned div */
+   
 }
