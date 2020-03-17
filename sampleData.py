@@ -12,7 +12,7 @@ data = []
 #     data.append(month)
 
 
-print(data)
+# print(data)
 
 for i in range(1, 32):
     row = []
@@ -24,6 +24,18 @@ for i in range(1, 32):
             else:
                 row.append(0)
     data.append(row)
-print(data)
-print("rows: ", len(data))
-print("columns: ", len(data[0]))
+# print(data)
+# print("rows: ", len(data))
+# print("columns: ", len(data[0]))
+
+data = {"yolo":13, "tere": 132, "meow": 32, "crackhead": 44}
+
+
+q = ""
+
+for i in data:
+    if(q != ""):
+        q = q + ","
+    q = q + i +"=" + str(data[i])
+    
+print(q)

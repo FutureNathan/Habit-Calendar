@@ -48,18 +48,18 @@ function fillCal(data, year) {
         var mm = monthNames[parseInt(String(today.getMonth() + 1).padStart(2, '0')) - 1]; //January is 0!
         today = 'star_' + mm + '_' + dd;
 
-        console.log("today: " + today);
+        console.log("star_id: " + id);
 
 
         if (star_val === "true") {
             document.getElementById(id).src = '/static/assets/star_white.png';
             document.getElementById(id).setAttribute("value", "false");
-            console.log("no")
+
         }
         else {
             document.getElementById(id).src = '/static/assets/star_gold.png';
             document.getElementById(id).setAttribute("value", "true");
-            console.log("yes")
+
         }
 
     };
