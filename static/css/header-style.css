@@ -1,0 +1,29 @@
+.left {
+    grid-area: l_eft;
+}
+.c_enter{
+    grid-area: c_top;
+}
+
+.circle{
+    grid-area: p_circle;
+}
+.right{
+    grid-area:r_ight;
+}
+
+
+.header {
+    
+    display: grid;
+    grid-template-areas:
+    'l_eft c_top c_top c_top  p_circle r_ight';
+    margin: 0px;
+  }
+
+.c_enter{
+  text-align: center;
+}
+.in_text{
+    height:50px;
+}

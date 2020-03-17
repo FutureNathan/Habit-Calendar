@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>Habit Calendar</title>
+    <link href="{{url_for('static',filename = 'css/header-style.css')}}" rel="stylesheet">
     <link href="{{url_for('static',filename = 'css/star-style.css')}}" rel="stylesheet">
     <link href="{{url_for('static',filename = 'css/calendar-style.css')}}" rel="stylesheet">
 
@@ -46,19 +47,26 @@
 <body>
 
     <div class="header" style="width:100%">
-        <img src="/static/assets/Back Arrow.png" id="left_btn" style="display: inline" onclick="back()">
-        <H1 style="display: inline">Good Habits</H1>
+        <img class="left" src="/static/assets/Back Arrow.png" id="left_btn" onclick="back()">
 
-        <div class="prog-body">
-            <div id="prog" class="ldBar label-center" data-preset="circle" data-stroke="#08CCF6">
-                <div class="prog-text" id='prog-text-val'>0/10</div>
-            </div>
-            <!-- <div class="prog-text" id='prog-text-val'>0/10</div> -->
+        <div class="c_enter" style="height: 50px;margin-bottom: 80px;">
+            <H1 class='in_text' style="height: 30px;margin-top: 0px;margin-bottom: 0px;">Good Habits</H1>
+            <H3 class='in_text' style="height: 30px;margin-top: 50px; margin-bottom:50px;"> title</H3>
         </div>
 
-        <img src="/static/assets/Back Arrow.png" style="transform: rotate(180deg); display: inline" id="right_btn"
+        <div class="circle" style="height: 100px; width:100px;">
+            <div class="prog-body" style="height: 100px; width:100px;">
+                <div id="prog" class="ldBar label-center" data-preset="circle" data-stroke="#08CCF6">
+                    <div class="prog-text" id='prog-text-val'>0/10</div>
+                </div>
+                <!-- <div class="prog-text" id='prog-text-val'>0/10</div> -->
+            </div>
+        </div>
+
+        <img class="right" src="/static/assets/Back Arrow.png" style="transform: rotate(180deg);" id="right_btn"
             onclick="next()">
     </div>
+
     <div class="calendar center">
         <table id="calender-table">
 

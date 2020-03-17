@@ -39,7 +39,6 @@
 } */
 
 .prog-body{
-  padding: 50px;
   position: relative;
   text-align:center;
 }
@@ -48,6 +47,6 @@
   padding-left: 23px;
   padding-top: 30px;
   color:  #08CCF6;
-  font-family: Roboto-thin;
+  font-family: Roboto;
   font-size: 20px;
 }
