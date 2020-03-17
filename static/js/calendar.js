@@ -21,7 +21,7 @@ function fillCal(data, year) {
                 //cell.innerHTML = "<div class='star'><img class='img-cls' id='star_" + months[month] + "_" + k + "' value = 'true' src = '/static/assets/star_gold.png' ><div class='star-text'>" + k + "</div></div>";
                 if (data[k - 1][month] == 1)
                     cell.innerHTML = "<div class='star'><img class='img-cls' id='star_" + months[month] + "_" + k + "' value = 'true' src = '/static/assets/star_gold.png' ><div class='star-text'>" + k + "</div></div>";
-                else
+                else //(data[k - 1][month] == 0)
                     cell.innerHTML = "<div class='star'><img class='img-cls' id='star_" + months[month] + "_" + k + "' value = 'false' src = '/static/assets/star_white.png' ><div class='star-text'>" + k + "</div></div>";
             }
         }
