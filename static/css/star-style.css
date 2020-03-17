@@ -1,8 +1,8 @@
 .star {
     position: relative;
     display: inline-block;
-    padding-bottom: 45px;
-    padding-right: 65px;
+    padding-bottom: 42px;
+    padding-right: 60px;
     /* Make the width of box same as image */
 }
 
@@ -17,10 +17,10 @@
     position: absolute;
     z-index: 999;
     margin: 0 auto;
-    left: 0;
-    right: 3%;
+    left: 3%;
+    right: 1%;
     text-align: center;
-    top: 38%;
+    top: 39%;
     font-family: Arial, sans-serif;
     font-size: 24px;
     color: rgb(0, 0, 0);
