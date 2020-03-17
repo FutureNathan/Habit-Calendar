@@ -18,16 +18,17 @@
     <script type="text/javascript" src="{{url_for('static',filename = 'js/jquery-3.2.1.min.js')}}"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            year = 2020;//parseInt({{ settings[0][1] }});
+            populateCalander("yolos");
+        }, false);
 
-            var req = "/calander_data?name=yolo";
+
+        function populateCalander(calander_name) {
+            year = 2020;//parseInt({{ settings[0][1] }});
+            var req = "/calander_data?name=" + calander_name;
             $.get(req, function (data, status) {
                 fillCal(data, year);
             });
-
-
-        }, false);
-
+        }
 
 
         i = 0;
