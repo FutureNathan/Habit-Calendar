@@ -49,17 +49,18 @@ function fillCal(data, year) {
         today = 'star_' + mm + '_' + dd;
 
         console.log("star_id: " + id);
+        c_name = document.getElementById('subtitle').innerHTML;
 
 
         if (star_val === "true") {
             document.getElementById(id).src = '/static/assets/star_white.png';
             document.getElementById(id).setAttribute("value", "false");
-            updateCalander("yolos", id, "0")
+            updateCalander(c_name, id, "0")
         }
         else {
             document.getElementById(id).src = '/static/assets/star_gold.png';
             document.getElementById(id).setAttribute("value", "true");
-            updateCalander("yolos", id, "1")
+            updateCalander(c_name, id, "1")
         }
 
     };
