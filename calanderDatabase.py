@@ -138,10 +138,10 @@ class Calander:
 
 # a = Calander()
 # a.updateCalander("yolos", "Jan", 1, 1)
-
+# a.createCalander("cleaning")
 # print(a.getCalanderData('yolo'))
 # print(a.getTableNames())
-# a.deleteCalander('brushings')
+# a.deleteCalander('brushing')
 
 # # print(a.countTables())
 

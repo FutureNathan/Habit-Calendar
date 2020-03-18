@@ -15,8 +15,9 @@ db = Calander()
 def index():
     settings  = db.getSettings()
     calanders = db.getTableNames()
+    current_cal = 0
     print(calanders)
-    return render_template('index.html', settings=settings, calanders=calanders)
+    return render_template('index.html', settings=settings, calanders=calanders, current_cal=current_cal)
 
 @app.route('/calander')
 def calander():

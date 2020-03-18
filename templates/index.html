@@ -7,6 +7,7 @@
     <link href="{{url_for('static',filename = 'css/header-style.css')}}" rel="stylesheet">
     <link href="{{url_for('static',filename = 'css/star-style.css')}}" rel="stylesheet">
     <link href="{{url_for('static',filename = 'css/calendar-style.css')}}" rel="stylesheet">
+    <link href="{{url_for('static',filename = 'css/settings-style.css')}}" rel="stylesheet">
 
     <link href="{{url_for('static',filename = 'css/loading-bar.css')}}" rel="stylesheet">
 
@@ -23,11 +24,23 @@
         calanders        = {{ calanders|safe}};
         year             = parseInt({{ settings[0][1] }});
         num_calanders    = calanders.length;
-        current_calander = 0;
+        current_calander = 3;
 
         document.addEventListener('DOMContentLoaded', function () {
-            populateCalander(calanders[0]);
-            document.getElementById("subtitle").innerHTML = calanders[0];   
+
+            if(current_calander === num_calanders){
+                document.getElementById("calender-table").style.display ='none';
+                document.getElementById("subtitle").innerHTML = "";
+
+                document.getElementById('settings-form').style.display ='block'
+            }
+            else {
+                populateCalander(calanders[current_calander]);
+                document.getElementById("subtitle").innerHTML = calanders[current_calander];   
+                document.getElementById('settings-form').style.display ='none'
+                console.log(num_calanders);
+            }
+
         }, false);
 
 
@@ -44,17 +57,23 @@
                 current_calander = current_calander - 1;
                 populateCalander(calanders[current_calander]);
                 document.getElementById("subtitle").innerHTML = calanders[current_calander];
+
+                document.getElementById('settings-form').style.display ='none'
             }
             else if(current_calander === 0){
                 current_calander = current_calander - 1;
                 document.getElementById("calender-table").style.display ='none';
                 document.getElementById("subtitle").innerHTML = "";
+
+                document.getElementById('settings-form').style.display ='block'
             }
             else {
                 current_calander = 2;
                 document.getElementById("calender-table").style.display ='table-row';
                 populateCalander(calanders[current_calander]);
                 document.getElementById("subtitle").innerHTML = calanders[current_calander];
+
+                document.getElementById('settings-form').style.display ='none'
             }
             
         }
@@ -66,11 +85,15 @@
                     current_calander = current_calander + 1;
                     populateCalander(calanders[current_calander]);
                     document.getElementById("subtitle").innerHTML = calanders[current_calander];
+
+                    document.getElementById('settings-form').style.display ='none'
                 }
-            else if(current_calander === 2){ 
+            else if(current_calander === num_calanders-1){ 
                     current_calander = current_calander + 1;
                     document.getElementById("calender-table").style.display ='none';
                     document.getElementById("subtitle").innerHTML = "";
+
+                    document.getElementById('settings-form').style.display ='block'
                 }
             else {
                 console.log("reset")
@@ -78,6 +101,8 @@
                 document.getElementById("calender-table").style.display ='table-row';
                 populateCalander(calanders[current_calander]);
                 document.getElementById("subtitle").innerHTML = calanders[current_calander];
+
+                document.getElementById('settings-form').style.display ='none'
             }
             
         }   
@@ -107,6 +132,20 @@
 
         </table>
     </div>
+
+    <div id="settings-form" class="setting-cls">
+        <div class="menu-box" >
+            <div class="leftof-menu">
+                <img class ='menu-img' src='/static/assets/Habit-up-arrow.png' >
+                <div class="menu-text"> option 1</div>
+            </div>
+            <div class='rightof-menu'>
+                <button class="del-btn" >Delete</button>
+            </div>
+        </div>
+        <button class="menu-box">New Habit</button>
+    </div>
+
     <script type="text/javascript" src="{{url_for('static',filename = 'js/task-count.js')}}"></script>
 </body>
 
