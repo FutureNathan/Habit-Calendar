@@ -149,42 +149,12 @@
                 <button class="del-btn" >Delete</button>
             </div>
         </div>
-        <button class="menu-box">New Habit</button>
+        <button id="keyboards" class="menu-box">New Habit</button>
         <div id="wrap">
             <input id="keyboard" type="text" placeholder="Enter something..." />
         </div>
     </div>
-    <script>
-        $('#keyboard').keyboard({
-            layout: 'custom',
-            customLayout: {
-                'normal': [
-                    '` 1 2 3 4 5 6 7 8 9 0 - = {bksp}',
-                    '{tab} q w e r t y u i o p [ ] \\',
-                    'a s d f g h j k l ; \' {enter}',
-                    '{shift} z x c v b n m , . / {shift}',
-                    '{accept} {space} {left} {right} {sp:.2} {del} {combo} {toggle} {extender}'],
-                    'shift': [
-                    '~ ! @ # $ % ^ & * ( ) _ + {bksp}',
-                    '{tab} Q W E R T Y U I O P { } |',
-                    'A S D F G H J K L : " {enter}',
-                    '{shift} Z X C V B N M < > ? {shift}',
-                    '{accept} {space} {left} {right} {sp:.2} {del} {combo} {toggle} {extender}']
-            },
-            usePreview: false,
-            acceptValid: true,
-            validate: function (kb, val) {
-                return val.length > 3;
-            }
-        })
-        // activate the typing extension
-        .addTyping({
-            showTyping: true,
-            delay: 250
-        });
-    </script>
-
-   
+    <script type="text/javascript" src="{{url_for('static',filename = 'js/onscreen-keyboard.js')}}"></script>
     <script type="text/javascript" src="{{url_for('static',filename = 'js/task-count.js')}}"></script>
 </body>
 
