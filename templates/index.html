@@ -26,11 +26,8 @@
         current_calander = 0;
 
         document.addEventListener('DOMContentLoaded', function () {
-            
             populateCalander(calanders[0]);
-            document.getElementById("subtitle").innerHTML = calanders[0];
-            
-            
+            document.getElementById("subtitle").innerHTML = calanders[0];   
         }, false);
 
 
@@ -41,25 +38,49 @@
             });
         }
         function back(){
-            if(current_calander != 0)
-            {
+            console.log(current_calander);
+            if(current_calander > 0){   
+                document.getElementById("calender-table").style.display ='table-row';
                 current_calander = current_calander - 1;
-                console.log(current_calander);
                 populateCalander(calanders[current_calander]);
                 document.getElementById("subtitle").innerHTML = calanders[current_calander];
             }
+            else if(current_calander === 0){
+                current_calander = current_calander - 1;
+                document.getElementById("calender-table").style.display ='none';
+                document.getElementById("subtitle").innerHTML = "";
+            }
+            else {
+                current_calander = 2;
+                document.getElementById("calender-table").style.display ='table-row';
+                populateCalander(calanders[current_calander]);
+                document.getElementById("subtitle").innerHTML = calanders[current_calander];
+            }
+            
         }
 
         function next(){
-            if(current_calander != num_calanders-1)
-                {
-                    
+            console.log(current_calander);
+            if(current_calander < num_calanders-1){
+                    document.getElementById("calender-table").style.display ='table-row';
                     current_calander = current_calander + 1;
-                    console.log(current_calander);
                     populateCalander(calanders[current_calander]);
                     document.getElementById("subtitle").innerHTML = calanders[current_calander];
                 }
-        }
+            else if(current_calander === 2){ 
+                    current_calander = current_calander + 1;
+                    document.getElementById("calender-table").style.display ='none';
+                    document.getElementById("subtitle").innerHTML = "";
+                }
+            else {
+                console.log("reset")
+                current_calander = 0;
+                document.getElementById("calender-table").style.display ='table-row';
+                populateCalander(calanders[current_calander]);
+                document.getElementById("subtitle").innerHTML = calanders[current_calander];
+            }
+            
+        }   
     </script>
 </head>
 
@@ -73,7 +94,7 @@
             <H3 id="subtitle" class='in_text' style="height: 30px;margin-top: 50px; margin-bottom:50px;"> title</H3>
         </div>
 
-        <div class="circle" style="height: 100px; width:100px;">
+        <div class="circle" >
             <div id="container"></div>
         </div>
 

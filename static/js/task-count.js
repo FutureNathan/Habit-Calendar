@@ -31,4 +31,4 @@ setInterval(function () {
         document.getElementById("bar-text").style.color = "#FFC700";
         path.setAttribute("stroke", "#FFC700");
     }
-}, 2000);
+}, 20000);
