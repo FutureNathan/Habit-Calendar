@@ -14,8 +14,10 @@
 
     <script type="text/javascript" src="{{url_for('static',filename = 'js/moment.min.js')}}"></script>
     <script type="text/javascript" src="{{url_for('static',filename = 'js/calendar.js')}}"></script>
-    <script type="text/javascript" src="{{url_for('static',filename = 'js/loading-bar.js')}}"></script>
-    <script type="text/javascript" src="{{url_for('static',filename = 'js/task-count.js')}}"></script>
+
+    <script type="text/javascript" src="{{url_for('static',filename = 'js/progressbar.js')}}"></script>
+
+
     <script type="text/javascript" src="{{url_for('static',filename = 'js/jquery-3.2.1.min.js')}}"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -35,12 +37,6 @@
 
         i = 0;
         total = 10;
-        function back() {
-            removeCount(i, 10);
-        }
-        function next() {
-            addCount(i, 10);
-        }
 
     </script>
 </head>
@@ -56,12 +52,7 @@
         </div>
 
         <div class="circle" style="height: 100px; width:100px;">
-            <div class="prog-body" style="height: 100px; width:100px;">
-                <div id="prog" class="ldBar label-center" data-preset="circle" data-stroke="#08CCF6">
-                    <div class="prog-text" id='prog-text-val'>0/10</div>
-                </div>
-                <!-- <div class="prog-text" id='prog-text-val'>0/10</div> -->
-            </div>
+            <div id="container"></div>
         </div>
 
         <img class="right" src="/static/assets/Back Arrow.png" style="transform: rotate(180deg);" id="right_btn"
@@ -73,7 +64,7 @@
 
         </table>
     </div>
-
+    <script type="text/javascript" src="{{url_for('static',filename = 'js/task-count.js')}}"></script>
 </body>
 
 </html>

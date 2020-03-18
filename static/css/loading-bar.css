@@ -1,52 +1,13 @@
-.ldBar {
-  position: relative;
-}
-.ldBar.label-center > .ldBar-label {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  text-shadow: 0 0 3px #fff;
-}
-.ldBar-label:after {
-  content: "";
-  display: inline;
-}
+@import url('/static/css/roboto-font.css'); 
 
-.ldBar.no-percent .ldBar-label:after {
-  content: "";
-}
 
-/* .pro-body{
-  width: 100px; 
-  height: auto;
-  margin: 0 auto;
-  padding: 10px;
-  position: relative;
-  text-align:center;
-}
 
-.prog-text{
-  position: absolute;
-  margin-left: auto;
-  margin-right: auto;
-  color:  #08CCF6;
-  font-family: Roboto-thin;
-  font-size: 20px;
-  font-weight: 900;
-  
-} */
-
-.prog-body{
-  position: relative;
-  text-align:center;
-}
-.prog-text{
-  position: absolute;
-  padding-left: 23px;
-  padding-top: 30px;
-  color:  #08CCF6;
-  font-family: Roboto;
-  font-size: 20px;
+#container {
+    font-family: Roboto;    
+    width:  100px;
+    height: 100px;
+    font-size: 25px;
+  }
+.progressbar-text{
+  color: #08CCF6;
 }

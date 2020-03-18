@@ -5,9 +5,6 @@ import json
 
 from calanderDatabase import Calander
 
-
-
-
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
 socketio = SocketIO(app)
@@ -18,10 +15,6 @@ db = Calander()
 def index():
     settings  = db.getSettings()
     return render_template('index.html', settings=settings)
-
-@app.route('/test')
-def test():
-    return render_template("test.html")
 
 @app.route('/calander')
 def calander():
