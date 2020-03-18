@@ -8,8 +8,10 @@
     <link href="{{url_for('static',filename = 'css/star-style.css')}}" rel="stylesheet">
     <link href="{{url_for('static',filename = 'css/calendar-style.css')}}" rel="stylesheet">
     <link href="{{url_for('static',filename = 'css/settings-style.css')}}" rel="stylesheet">
-
     <link href="{{url_for('static',filename = 'css/loading-bar.css')}}" rel="stylesheet">
+
+    <link href="{{url_for('static',filename = 'css/keyboard-dark.css')}}" rel="stylesheet">
+
 
     <link rel="icon" href="{{url_for('static',filename = 'assets/favicon.PNG')}}" sizes="16x16">
 
@@ -20,6 +22,10 @@
 
 
     <script type="text/javascript" src="{{url_for('static',filename = 'js/jquery-3.2.1.min.js')}}"></script>
+
+    
+    <script type="text/javascript" src="{{url_for('static',filename = 'js/jquery.keyboard.min.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static',filename = 'js/jquery.keyboard.extension-typing.min.js')}}"></script>
     <script>
         calanders        = {{ calanders|safe}};
         year             = parseInt({{ settings[0][1] }});
@@ -144,8 +150,41 @@
             </div>
         </div>
         <button class="menu-box">New Habit</button>
+        <div id="wrap">
+            <input id="keyboard" type="text" placeholder="Enter something..." />
+        </div>
     </div>
+    <script>
+        $('#keyboard').keyboard({
+            layout: 'custom',
+            customLayout: {
+                'normal': [
+                    '` 1 2 3 4 5 6 7 8 9 0 - = {bksp}',
+                    '{tab} q w e r t y u i o p [ ] \\',
+                    'a s d f g h j k l ; \' {enter}',
+                    '{shift} z x c v b n m , . / {shift}',
+                    '{accept} {space} {left} {right} {sp:.2} {del} {combo} {toggle} {extender}'],
+                    'shift': [
+                    '~ ! @ # $ % ^ & * ( ) _ + {bksp}',
+                    '{tab} Q W E R T Y U I O P { } |',
+                    'A S D F G H J K L : " {enter}',
+                    '{shift} Z X C V B N M < > ? {shift}',
+                    '{accept} {space} {left} {right} {sp:.2} {del} {combo} {toggle} {extender}']
+            },
+            usePreview: false,
+            acceptValid: true,
+            validate: function (kb, val) {
+                return val.length > 3;
+            }
+        })
+        // activate the typing extension
+        .addTyping({
+            showTyping: true,
+            delay: 250
+        });
+    </script>
 
+   
     <script type="text/javascript" src="{{url_for('static',filename = 'js/task-count.js')}}"></script>
 </body>
 
