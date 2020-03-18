@@ -48,6 +48,13 @@ class Calander:
         # print(complete)
         return complete
 
+    # function to update a given calander by name, month and day
+    def updateCalander(self, name, month, day, value):
+        year = int(self.getSettings()[0][1])
+        q_string = "UPDATE {} SET {}={} WHERE count={}".format(name, month, value, day)
+        self.c.execute(q_string)
+        self.conn.commit()
+
     # function to delete a calander table by its name
     def deleteCalander(self, name):
         q_string = "DROP TABLE {}".format(name)
@@ -130,6 +137,7 @@ class Calander:
 
 
 # a = Calander()
+# a.updateCalander("yolos", "Jan", 1, 1)
 
 # print(a.getCalanderData('yolo'))
 # print(a.getTableNames())

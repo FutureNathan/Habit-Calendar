@@ -34,6 +34,23 @@ def calanderData():
     # data = json.dumps(data)
     return jsonify(data)
 
+@app.route('/updatecalander', methods=["GET","POST"])
+def updateCalanderApi():
+    try:
+        calander_name = request.args.get('name')
+        month_day     = request.args.get('monthday')
+        value         = request.args.get('value')
+        data  = month_day.split('_')
+        month = data[1]
+        day   = int(data[2])
+        value = int(value)
+        print(calander_name, month, day, value)
+        db.updateCalander(calander_name, month, day, value)
+        return "1"
+    except Exception as e:
+        print(e)
+        return "0"
+
 if __name__ == '__main__':
     # app.run(host='0.0.0.0',port = 80, threaded=True, debug=True)
     socketio.run(app, host='0.0.0.0', port=80, debug=True)

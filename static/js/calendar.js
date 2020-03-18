@@ -54,18 +54,27 @@ function fillCal(data, year) {
         if (star_val === "true") {
             document.getElementById(id).src = '/static/assets/star_white.png';
             document.getElementById(id).setAttribute("value", "false");
-
+            updateCalander("yolos", id, "0")
         }
         else {
             document.getElementById(id).src = '/static/assets/star_gold.png';
             document.getElementById(id).setAttribute("value", "true");
-
+            updateCalander("yolos", id, "1")
         }
 
     };
 
     for (var i = 0; i < elements.length; i++) {
         elements[i].addEventListener('click', daySelector, false);
+    }
+
+    function updateCalander(name, month_day, value) {
+        //updatecalander?name=yolo&monthday=y_Mar_5&value=1
+
+        var req = "/updatecalander?name=" + name + "&monthday=" + month_day + "&value=" + value;
+        $.get(req, function (data, status) {
+            console.log("server Ret:" + data)
+        });
     }
 
 
