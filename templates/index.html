@@ -20,24 +20,46 @@
 
     <script type="text/javascript" src="{{url_for('static',filename = 'js/jquery-3.2.1.min.js')}}"></script>
     <script>
+        calanders        = {{ calanders|safe}};
+        year             = parseInt({{ settings[0][1] }});
+        num_calanders    = calanders.length;
+        current_calander = 0;
+
         document.addEventListener('DOMContentLoaded', function () {
-            populateCalander("yolos");
-            document.getElementById("subtitle").innerHTML = "yolos";
+            
+            populateCalander(calanders[0]);
+            document.getElementById("subtitle").innerHTML = calanders[0];
+            
+            
         }, false);
 
 
         function populateCalander(calander_name) {
-            year = 2020;//parseInt({{ settings[0][1] }});
             var req = "/calander_data?name=" + calander_name;
             $.get(req, function (data, status) {
                 fillCal(data, year);
             });
         }
+        function back(){
+            if(current_calander != 0)
+            {
+                current_calander = current_calander - 1;
+                console.log(current_calander);
+                populateCalander(calanders[current_calander]);
+                document.getElementById("subtitle").innerHTML = calanders[current_calander];
+            }
+        }
 
-
-        i = 0;
-        total = 10;
-
+        function next(){
+            if(current_calander != num_calanders-1)
+                {
+                    
+                    current_calander = current_calander + 1;
+                    console.log(current_calander);
+                    populateCalander(calanders[current_calander]);
+                    document.getElementById("subtitle").innerHTML = calanders[current_calander];
+                }
+        }
     </script>
 </head>
 

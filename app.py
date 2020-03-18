@@ -14,7 +14,9 @@ db = Calander()
 @app.route('/')
 def index():
     settings  = db.getSettings()
-    return render_template('index.html', settings=settings)
+    calanders = db.getTableNames()
+    print(calanders)
+    return render_template('index.html', settings=settings, calanders=calanders)
 
 @app.route('/calander')
 def calander():
