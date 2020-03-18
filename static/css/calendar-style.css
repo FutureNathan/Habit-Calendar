@@ -1,4 +1,7 @@
 @import url('/static/css/roboto-font.css'); 
+html{
+    overflow:hidden;
+}
 
 body{
     background-color: black;
