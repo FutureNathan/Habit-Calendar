@@ -33,6 +33,26 @@ function saveTask()
 
 }
 
+var delbuttons = document.getElementsByClassName("del-btn");
+
+Array.from(delbuttons).forEach(function(element){
+      element.addEventListener("click", deleteTask, false);   
+});
+
+
+
+function deleteTask()
+{   
+    var data = this;
+    task_name = data['value'];
+    console.log(task_name);
+    var req = "/delete-task?task-name=" + task_name ;
+    $.get(req, function (data, status) {
+        console.log("server Ret:" + data)
+        window.location.replace("/?curr="+ (num_calanders-1));
+    });
+}
+
 var modal = document.getElementById("myModal");
 var btn = document.getElementById("new-habit-modal");
 btn.onclick = function() {

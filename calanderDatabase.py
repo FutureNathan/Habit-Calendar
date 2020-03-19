@@ -55,6 +55,15 @@ class Calander:
         self.c.execute(q_string)
         self.conn.commit()
 
+    def getSingleEntry(self, name, month, day):
+        q_string = "SELECT {} FROM {} WHERE count = {}".format(month, name, day)
+        self.c.row_factory = None
+        self.c.execute(q_string)
+        data = self.c.fetchall()
+        if(data == []):
+            return
+        return data
+
     # function to delete a calander table by its name
     def deleteCalander(self, name):
         q_string = "DROP TABLE {}".format(name)
@@ -124,6 +133,19 @@ class Calander:
         self.c.execute(q_string)
         self.conn.commit()
 
+    def getTodaysTask(self, month, day):
+        tables = self.getTableNames()
+        tasks_list = []
+        for table in tables:
+            data = self.getSingleEntry(table, month, day)[0][0]
+            tasks_list.append(data)
+        data = {
+            "total": len(tables),
+            "incomplete": tasks_list.count(0),
+            "complete": tasks_list.count(1)
+        }
+        return data
+    
     # Function to convert dict keys and values to be embedded with the sql query used by the reset function
     def dictToString(self, data):
         q = ""
@@ -137,7 +159,9 @@ class Calander:
 
 
 # a = Calander()
-# a.updateCalander("yolos", "Jan", 1, 1)
+# aa = a.getTodaysTask("Jan", 3)
+# print(aa)
+# # a.updateCalander("yolos", "Jan", 1, 1)
 # a.createCalander("cleaning")
 # print(a.getCalanderData('yolo'))
 # print(a.getTableNames())

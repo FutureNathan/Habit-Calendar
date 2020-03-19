@@ -71,10 +71,11 @@ function fillCal(data, year) {
 
     function updateCalander(name, month_day, value) {
         //updatecalander?name=yolo&monthday=y_Mar_5&value=1
-
+        
         var req = "/updatecalander?name=" + name + "&monthday=" + month_day + "&value=" + value;
         $.get(req, function (data, status) {
             console.log("server Ret:" + data)
+            CountTask();
         });
     }
 

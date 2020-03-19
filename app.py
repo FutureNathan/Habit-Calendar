@@ -61,6 +61,30 @@ def createTask():
         print(e)
         return "0"
 
+@app.route('/delete-task', methods=["GET","POST"])
+def deleteTask():
+    try:
+        task_name = request.args.get('task-name')
+        db.deleteCalander(task_name)
+        return "1"
+    except Exception as e:
+        print(e)
+        return "0"
+
+@app.route('/get-completion', methods=["GET", "POST"])
+def completionStatus():
+    try:
+        month = request.args.get('month');
+        day   = request.args.get('day')
+        day   = int(day)
+
+        data = db.getTodaysTask(month, day)
+        
+        return jsonify(data)
+    except Exception as e:
+        print(e)
+        return "0"
+
 if __name__ == '__main__':
     # app.run(host='0.0.0.0',port = 80, threaded=True, debug=True)
     socketio.run(app, host='0.0.0.0', port=80, debug=True)

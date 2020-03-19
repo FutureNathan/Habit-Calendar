@@ -33,7 +33,7 @@
         current_calander = parseInt({{current_cal}});
 
         document.addEventListener('DOMContentLoaded', function () {
-
+            
             if(current_calander === num_calanders){
                 document.getElementById("calender-table").style.display ='none';
                 document.getElementById("subtitle").innerHTML = "";
@@ -54,6 +54,7 @@
             var req = "/calander_data?name=" + calander_name;
             $.get(req, function (data, status) {
                 fillCal(data, year);
+                CountTask();
             });
         }
         function back(){
@@ -140,15 +141,19 @@
     </div>
 
     <div id="settings-form" class="setting-cls">
+    
+        {% for item in calanders %}
         <div class="menu-box" >
             <div class="leftof-menu">
                 <img class ='menu-img' src='/static/assets/Habit-up-arrow.png' >
-                <div class="menu-text"> option 1</div>
+                <div class="menu-text"> {{item}}</div>
             </div>
             <div class='rightof-menu'>
-                <button class="del-btn" >Delete</button>
+                <button id ='task-del' class="del-btn" value="{{item}}" >Delete</button>
             </div>
         </div>
+        {% endfor %}
+
         <button id="new-habit-modal" class="menu-box">New Habit</button>
 
     </div>
