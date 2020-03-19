@@ -65,3 +65,24 @@ if (event.target == modal) {
     
     }
 }
+
+function changeDisplayOn(){
+    on_time = document.getElementById("disp_on_time").value;
+    console.log(on_time);
+    var req = "/on_time?on-time=" + on_time ;
+    $.get(req, function (data, status) {
+        console.log("server Ret:" + data)
+        //window.location.replace("/?curr="+ (num_calanders));
+    });
+
+
+}
+function changeDisplayOff(){
+    off_time = document.getElementById("disp_off_time").value;
+    console.log(off_time);
+    var req = "/off_time?off-time=" + off_time ;
+    $.get(req, function (data, status) {
+        console.log("server Ret:" + data)
+        //window.location.replace("/?curr="+ (num_calanders));
+    });
+}

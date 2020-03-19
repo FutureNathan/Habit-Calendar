@@ -129,7 +129,7 @@ class Calander:
         self.conn.commit()
 
     def updateSettings(self, key, value):
-        q_string = "UPDATE settings SET value = {} WHERE key = '{}'".format(value, key)
+        q_string = "UPDATE settings SET value = '{}' WHERE key = '{}'".format(value, key)
         self.c.execute(q_string)
         self.conn.commit()
 

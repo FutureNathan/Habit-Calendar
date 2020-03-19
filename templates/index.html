@@ -154,6 +154,30 @@
         </div>
         {% endfor %}
 
+        <div class="menu-box" >
+            <div class="leftof-menu">
+                <img class ='menu-img' src='/static/assets/Habit-up-arrow.png' >
+                <div class="menu-text"> Display On</div>
+                <input id ='disp_on_time' class="menu-input"  type="time"  value="{{settings[1][1]}}"> 
+            </div>
+            <div class='rightof-menu'>
+                <button id ='disp_on' class="update-btn" onclick="changeDisplayOn()">Update</button>
+            </div>
+        </div>
+
+        <div class="menu-box" >
+            <div class="leftof-menu">
+                <img class ='menu-img' src='/static/assets/Habit-up-arrow.png' >
+                <div class="menu-text"> Display Off</div>
+                <input id ='disp_off_time' class="menu-input"  type="time"  value="{{settings[2][1]}}"> 
+
+            </div>
+            <div class='rightof-menu'>
+                <button id ='disp_off' class="update-btn" onclick="changeDisplayOff()">Update</button>
+            </div>
+        </div>
+        
+
         <button id="new-habit-modal" class="menu-box">New Habit</button>
 
     </div>

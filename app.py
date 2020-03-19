@@ -1,7 +1,11 @@
 from flask import Flask, render_template, flash, request, url_for, redirect, Response, jsonify
 from flask_socketio import SocketIO, emit, send
 from werkzeug.datastructures import ImmutableMultiDict
+from time import sleep
 import json
+import subprocess
+import schedule
+import threading
 
 from calanderDatabase import Calander
 
@@ -85,6 +89,63 @@ def completionStatus():
         print(e)
         return "0"
 
+@app.route('/on_time', methods=["GET", "POST"])
+def onTimeChange():
+    try:
+        on_time = request.args.get('on-time')
+        db.updateSettings('display_on', on_time)
+        displaySchedule()
+        return "1"
+    except Exception as e:
+        print(e)
+        return "0"
+
+@app.route('/off_time', methods=["GET", "POST"])
+def offTimeChange():
+    try:
+        off_time = request.args.get('off-time')
+        print(off_time)
+        db.updateSettings('display_off', off_time)
+        displaySchedule()
+        return "1"
+    except Exception as e:
+        print(e)
+        return "0"
+
+def displaySchedule():
+    schedule.clear()
+    data = db.getSettings()
+    d_on  = data[1][1]
+    d_off = data[2][1]
+    print(d_on, d_off)
+    print("changing schedules")
+    schedule.every().day.at(d_on).do(displayOn)
+    schedule.every().day.at(d_off).do(displayOff)
+
+def displayOn():
+    cmd = "vcgencmd display_power 1"
+    commandExec(cmd)
+
+def displayOff():
+    cmd = "vcgencmd display_power 0"
+    commandExec(cmd)
+
+def commandExec(command):
+    try:
+        out = subprocess.check_output(command, shell=True)
+        return out.decode()
+    except:
+        return "error"
+
+def schedularThread():
+    while True:
+        schedule.run_pending()
+        sleep(1)
+
+displaySchedule()
+
 if __name__ == '__main__':
     # app.run(host='0.0.0.0',port = 80, threaded=True, debug=True)
+    threading.Thread(target=schedularThread).start()
     socketio.run(app, host='0.0.0.0', port=80, debug=True)
+    

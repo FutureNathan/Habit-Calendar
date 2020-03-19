@@ -9,7 +9,8 @@ $('#keyboard')
 			buttonAction: 'active',
 			buttonDisabled: 'disabled'
 		},usePreview: false,
-        acceptValid: true,
+		acceptValid: true,
+		autoAccept: true,
         validate: function (kb, val) {
             return val.length > 3;
         }
