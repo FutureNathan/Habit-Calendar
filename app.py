@@ -17,19 +17,19 @@ db = Calander()
 
 @app.route('/', methods=["GET","POST"])
 def index():
+    settings  = db.getSettings()
+    calanders = db.getTableNames()
     try: 
         current_cal = int(request.args.get('curr'))
+        if(current_cal >len(calanders)):
+            current_cal = 0
     except:
         current_cal = 0
     print(current_cal)
-    settings  = db.getSettings()
-    calanders = db.getTableNames()
+    
     print(calanders)
     return render_template('index.html', settings=settings, calanders=calanders, current_cal=current_cal)
 
-@app.route('/calander')
-def calander():
-    return render_template("calenderTest.html")
 
 @app.route('/calander_data', methods=["GET","POST"])
 def calanderData():

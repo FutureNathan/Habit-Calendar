@@ -10,7 +10,7 @@ $('#keyboard')
 			buttonDisabled: 'disabled'
 		},usePreview: false,
 		acceptValid: true,
-		autoAccept: true,
+		//autoAccept: true,
         validate: function (kb, val) {
             return val.length > 3;
         }
