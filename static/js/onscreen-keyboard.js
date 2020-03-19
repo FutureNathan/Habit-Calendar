@@ -1,27 +1,21 @@
-$('#keyboard').keyboard({
-    layout: 'custom',
-    customLayout: {
-        'normal': [
-            '` 1 2 3 4 5 6 7 8 9 0 - = {bksp}',
-            '{tab} q w e r t y u i o p [ ] \\',
-            'a s d f g h j k l ; \' {enter}',
-            '{shift} z x c v b n m , . / {shift}',
-            '{accept} {space} {left} {right} {sp:.2} {del} {combo} {toggle} {extender}'],
-            'shift': [
-            '~ ! @ # $ % ^ & * ( ) _ + {bksp}',
-            '{tab} Q W E R T Y U I O P { } |',
-            'A S D F G H J K L : " {enter}',
-            '{shift} Z X C V B N M < > ? {shift}',
-            '{accept} {space} {left} {right} {sp:.2} {del} {combo} {toggle} {extender}']
-    },
-    usePreview: false,
-    acceptValid: true,
-    validate: function (kb, val) {
-        return val.length > 3;
-    }
-})
-// activate the typing extension
-.addTyping({
-    showTyping: true,
-    delay: 250
-});
+$('#keyboard')
+	.keyboard({
+		layout: 'international',
+		css: {
+			input: 'form-control input-sm dark',
+			container: 'center-block well',
+			buttonDefault: 'btn btn-default',
+			buttonHover: 'btn-primary',
+			buttonAction: 'active',
+			buttonDisabled: 'disabled'
+		},usePreview: false,
+        acceptValid: true,
+        validate: function (kb, val) {
+            return val.length > 3;
+        }
+	})
+	.addTyping({
+        showTyping: true,
+        delay: 250
+    });
+   

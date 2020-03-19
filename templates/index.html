@@ -12,6 +12,7 @@
     <link href="{{url_for('static',filename = 'css/modal-style.css')}}" rel="stylesheet">
     <link href="{{url_for('static',filename = 'css/keyboard-dark.css')}}" rel="stylesheet">
 
+    
 
     <link rel="icon" href="{{url_for('static',filename = 'assets/favicon.PNG')}}" sizes="16x16">
 
@@ -22,15 +23,14 @@
 
 
     <script type="text/javascript" src="{{url_for('static',filename = 'js/jquery-3.2.1.min.js')}}"></script>
-
     
     <script type="text/javascript" src="{{url_for('static',filename = 'js/jquery.keyboard.min.js')}}"></script>
     <script type="text/javascript" src="{{url_for('static',filename = 'js/jquery.keyboard.extension-typing.min.js')}}"></script>
     <script>
-        calanders        = {{ calanders|safe}};
+        calanders        = {{calanders|safe}};
         year             = parseInt({{ settings[0][1] }});
         num_calanders    = calanders.length;
-        current_calander = 3;
+        current_calander = parseInt({{current_cal}});
 
         document.addEventListener('DOMContentLoaded', function () {
 
@@ -150,9 +150,6 @@
             </div>
         </div>
         <button id="new-habit-modal" class="menu-box">New Habit</button>
-        <div id="wrap">
-            <input id="keyboard" type="text" placeholder="Enter something..." />
-        </div>
 
     </div>
 
@@ -160,49 +157,19 @@
 
         <!-- Modal content -->
         <div class="modal-content">
-          <div class="modal-header">
-            <span class="close">&times;</span>
-            <h2>Modal Header</h2>
+
+          <div class="modal-body out">
+                <input  class= "text-box in" type="text" id="keyboard" placeholder="Enter New Task"> <br>
+                <button class="save-btn in" onclick="exitModal()" >cancel</button>
+                <button class="save-btn in" onclick="saveTask()" >Save</button>
           </div>
-          <div class="modal-body">
-            <p>Some text in the Modal Body</p>
-            <p>Some other text...</p>
-          </div>
-          <div class="modal-footer">
-            <h3>Modal Footer</h3>
-          </div>
+
         </div>
       </div>
-      <script>
-            // Get the modal
-            var modal = document.getElementById("myModal");
-            
-            // Get the button that opens the modal
-            var btn = document.getElementById("new-habit-modal");
-            
-            // Get the <span> element that closes the modal
-            var span = document.getElementsByClassName("close")[0];
-            
-            // When the user clicks the button, open the modal 
-            btn.onclick = function() {
-            modal.style.display = "block";
-            }
-            
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function() {
-            modal.style.display = "none";
-            }
-            
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-                }
-            }
-        </script>
 
     <script type="text/javascript" src="{{url_for('static',filename = 'js/onscreen-keyboard.js')}}"></script>
     <script type="text/javascript" src="{{url_for('static',filename = 'js/task-count.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static',filename = 'js/settings-control.js')}}"></script>
 </body>
 
 </html>

@@ -11,11 +11,15 @@ socketio = SocketIO(app)
 
 db = Calander()
 
-@app.route('/')
+@app.route('/', methods=["GET","POST"])
 def index():
+    try: 
+        current_cal = int(request.args.get('curr'))
+    except:
+        current_cal = 0
+    print(current_cal)
     settings  = db.getSettings()
     calanders = db.getTableNames()
-    current_cal = 0
     print(calanders)
     return render_template('index.html', settings=settings, calanders=calanders, current_cal=current_cal)
 
@@ -42,6 +46,16 @@ def updateCalanderApi():
         value = int(value)
         print(calander_name, month, day, value)
         db.updateCalander(calander_name, month, day, value)
+        return "1"
+    except Exception as e:
+        print(e)
+        return "0"
+
+@app.route('/create-task', methods=["GET","POST"])
+def createTask():
+    try:
+        task_name = request.args.get('task-name')
+        db.createCalander(task_name)
         return "1"
     except Exception as e:
         print(e)

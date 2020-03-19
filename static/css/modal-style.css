@@ -2,31 +2,80 @@
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
+    padding-top: 300px; /* Location of the box */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
   }
   
   /* Modal Content */
   .modal-content {
     position: relative;
-    background-color: #fefefe;
+    background-color:  #08CCF6;
     margin: auto;
     padding: 0;
     border: 1px solid #888;
-    width: 80%;
+    width: 60%;
+    height:120px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
-    animation-duration: 0.4s
+    animation-duration: 0.4s;
+    border-radius: 55px;
+    vertical-align: middle;
+    text-align: center;
   }
   
+  .out {
+    margin-top: 10px;
+    display: inline-block;
+  
+  }
+  
+  .in {
+    font-family: Roboto;
+    font-size: 25px;
+    color: #000;
+    margin-bottom: 5px;
+  }
+
+  .text-box{
+    font-family: Roboto;
+    font-size: 36px;
+    background-color: rgb(0, 0, 0);
+    border: none;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    text-decoration: none;
+    font-family: Roboto;
+    font-size: 26px;
+    width: 500px;
+    height: 45px;
+    border-radius:55px;
+  }
+  .save-btn  {  
+    
+    font-family: Roboto;
+    font-size: 36px;
+    background-color: rgb(0, 0, 0);
+    border: none;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    text-decoration: none;
+    font-family: Roboto;
+    font-size: 26px;
+    width: 100px;
+    height: 50px;
+    border-radius:55px;
+  }
+
+
+
   /* Add Animation */
   @-webkit-keyframes animatetop {
     from {top:-300px; opacity:0} 
@@ -53,16 +102,7 @@
     cursor: pointer;
   }
   
-  .modal-header {
-    padding: 2px 16px;
-    background-color: #5cb85c;
-    color: white;
-  }
+
+  .modal-body {padding: 2px 16px;
+    }
   
-  .modal-body {padding: 2px 16px;}
-  
-  .modal-footer {
-    padding: 2px 16px;
-    background-color: #5cb85c;
-    color: white;
-  }
