@@ -19,6 +19,7 @@ db = Calander()
 def index():
     settings  = db.getSettings()
     calanders = db.getTableNames()
+    tasks     = db.getTaskOrder()
     try: 
         current_cal = int(request.args.get('curr'))
         if(current_cal >len(calanders)):
@@ -28,7 +29,7 @@ def index():
     print(current_cal)
     
     print(calanders)
-    return render_template('index.html', settings=settings, calanders=calanders, current_cal=current_cal)
+    return render_template('index.html', settings=settings, calanders=calanders, current_cal=current_cal, tasks=tasks)
 
 
 @app.route('/calander_data', methods=["GET","POST"])
@@ -110,6 +111,22 @@ def offTimeChange():
         return "1"
     except Exception as e:
         print(e)
+        return "0"
+
+@app.route('/update-task-order', methods=["GET", "POST"])
+def updateTaskOrder():
+    try:
+        if request.method == "POST":
+            data = request.values.to_dict(flat= True)
+            data = list(data)
+            data = data[0]
+            data = data.replace("[", "").replace("]", "").replace('"', "")
+            data = data.split(",")
+
+            print(data)
+            db.updateTaskOrder(data)
+            return "1"
+    except:
         return "0"
 
 def displaySchedule():

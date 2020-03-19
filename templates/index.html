@@ -27,7 +27,7 @@
     <script type="text/javascript" src="{{url_for('static',filename = 'js/jquery.keyboard.min.js')}}"></script>
     <script type="text/javascript" src="{{url_for('static',filename = 'js/jquery.keyboard.extension-typing.min.js')}}"></script>
     <script>
-        calanders        = {{calanders|safe}};
+        calanders        = {{tasks|safe}};
         year             = parseInt({{ settings[0][1] }});
         num_calanders    = calanders.length;
         current_calander = parseInt({{current_cal}});
@@ -142,10 +142,10 @@
 
     <div id="settings-form" class="setting-cls">
     
-        {% for item in calanders %}
+        {% for item in tasks %}
         <div class="menu-box" >
             <div class="leftof-menu">
-                <img class ='menu-img' src='/static/assets/Habit-up-arrow.png' >
+                <img class ='menu-img' src='/static/assets/Habit-up-arrow.png' value ="{{item}}" id="{{item}}" >
                 <div class="menu-text"> {{item}}</div>
             </div>
             <div class='rightof-menu'>

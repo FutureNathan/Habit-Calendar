@@ -23,6 +23,7 @@ class Calander:
             self.c.execute(q_string)
             self.conn.commit()
             self.resetTable(name)
+            self.addtoTaskOrder(name)
             return True
         except Exception as e:
             print(e)
@@ -69,6 +70,7 @@ class Calander:
         q_string = "DROP TABLE {}".format(name)
         self.c.execute(q_string)
         self.conn.commit()
+        self.removeFromTaskOrder(name)
 
     # Function that returns the names of all the calander tables in the database
     def getTableNames(self):
@@ -133,6 +135,42 @@ class Calander:
         self.c.execute(q_string)
         self.conn.commit()
 
+    def getTaskOrder(self):
+        data = self.getSettings()
+        try:
+            data = data[3][1]
+            data = data.split(' ')
+            if(len(data) == 1):
+                if(data[0] == ''):
+                    return 0
+                else:
+                    return data
+            return data
+        except:
+            return 0
+
+    def updateTaskOrder(self, order):
+        table_str = ""
+        for i in order:
+            if(table_str != ""):
+                table_str = table_str + " "+ i
+            else:
+                table_str = i
+        self.updateSettings("order", table_str)
+
+    def addtoTaskOrder(self, task):
+        old_order = self.getTaskOrder()
+        if(old_order != 0):
+            old_order.append(task)
+        else:
+            old_order = [task]
+        self.updateTaskOrder(old_order)
+
+    def removeFromTaskOrder(self, task):
+        old_order = self.getTaskOrder()
+        old_order.remove(task)
+        self.updateTaskOrder(old_order)
+
     def getTodaysTask(self, month, day):
         tables = self.getTableNames()
         tasks_list = []
@@ -145,7 +183,7 @@ class Calander:
             "complete": tasks_list.count(1)
         }
         return data
-    
+
     # Function to convert dict keys and values to be embedded with the sql query used by the reset function
     def dictToString(self, data):
         q = ""
@@ -159,6 +197,23 @@ class Calander:
 
 
 # a = Calander()
+# tables = a.getTableNames()
+# # # da = a.getTaskOrder()
+# # da =a.getTableNames()
+# # a.updateTaskOrder(da)
+# print(tables)
+# print(a.getTaskOrder())
+# data = a.getTaskOrder()
+
+# if(data == 0):
+#     print("empty")
+
+# a.removeFromTaskOrder('test2')
+# a.addtoTaskOrder('test2')
+
+# print(tables)
+# a.updateSettings("order", table_str)
+# a.populateSettings("order", table_str)
 # aa = a.getTodaysTask("Jan", 3)
 # print(aa)
 # # a.updateCalander("yolos", "Jan", 1, 1)

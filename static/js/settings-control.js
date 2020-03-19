@@ -39,6 +39,37 @@ Array.from(delbuttons).forEach(function(element){
       element.addEventListener("click", deleteTask, false);   
 });
 
+var change_order = document.getElementsByClassName('menu-img');
+Array.from(change_order).forEach(function(element){
+    element.addEventListener("click", changeOrder, false);   
+});
+
+function changeOrder(){
+    var data  = this;
+    task_id   = data['id'];
+    all_tasks = calanders;
+    
+    if(task_id !=""){
+        num_tasks = all_tasks.length;
+
+        task_index = all_tasks.indexOf(task_id);
+        if(task_index != 0)
+        {
+            temp = all_tasks[task_index-1]
+            all_tasks[task_index - 1] = all_tasks[task_index]
+            all_tasks[task_index] = temp
+            
+            console.log(all_tasks);
+            //data = {'data': all_tasks}
+            data = JSON.stringify(all_tasks)
+            console.log(data)
+            $.post('/update-task-order', data, function (data, status) {
+                console.log(data, status);
+                window.location.replace("/?curr="+ (num_calanders));
+            });
+        }
+    }
+}
 
 
 function deleteTask()
