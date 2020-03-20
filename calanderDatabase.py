@@ -3,7 +3,7 @@ import time
 import datetime
 from calendar import monthrange
 
-database_dir = '/home/pi/Habit-Calendar/habit-calendar.db'
+database_dir = '/home/pi/Habit-Calendar/habit-calander.db'
 months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
             "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
         ]
