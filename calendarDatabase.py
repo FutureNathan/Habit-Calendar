@@ -3,14 +3,14 @@ import time
 import datetime
 from calendar import monthrange
 
-database_dir = '/home/pi/Habit-Calendar/habit-calander.db'
+database_dir = '/home/pi/Habit-Calendar/habit-calendar.db'
 months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
             "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
         ]
 
 
 
-class Calander:
+class Calendar:
     def __init__(self):
         self.conn = sqlite3.connect(database_dir, check_same_thread=False)
         self.c = self.conn.cursor()  
@@ -20,7 +20,7 @@ class Calander:
         name = name.replace(" ", "_")
         try:
             q_string = "CREATE TABLE {} (count INTEGER, Jan INTEGER, Feb INTEGER, Mar INTEGER, Apr INTEGER, May INTEGER, Jun INTEGER, Jul INTEGER, Aug INTEGER, Sep INTEGER, Oct INTEGER, Nov INTEGER, Dec INTEGER )".format(name)
-            self.c.execute(q_string)
+            self.c.execute(q_string) 
             self.conn.commit()
             self.resetTable(name)
             self.addtoTaskOrder(name)

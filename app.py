@@ -7,13 +7,13 @@ import subprocess
 import schedule
 import threading
 
-from calanderDatabase import Calander
+from calendarDatabase import Calendar
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
 socketio = SocketIO(app)
 
-db = Calander()
+db = Calendar()
 
 @app.route('/', methods=["GET","POST"])
 def index():
