@@ -142,12 +142,12 @@ class Calendar:
             data = data.split(' ')
             if(len(data) == 1):
                 if(data[0] == ''):
-                    return 0
+                    return []
                 else:
                     return data
             return data
         except:
-            return 0
+            return []
 
     def updateTaskOrder(self, order):
         table_str = ""
