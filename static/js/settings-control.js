@@ -31,10 +31,30 @@ function saveTask()
         new_name   = rename_tag.value;
         if(new_name !="")
         {
+            curr_tasks = calanders;
             id = rename_tag.getAttribute("placeholder");
-            console.log(id);
-            console.log(new_name);
-            
+            console.log("---------------")
+            console.log("old name:"+ id);
+            console.log("new name:"+ new_name);
+            console.log(curr_tasks);
+            console.log("---------------")
+
+            index = curr_tasks.indexOf(id);
+            curr_tasks[index] = new_name;
+            console.log(curr_tasks)
+
+            data = JSON.stringify(curr_tasks)
+            console.log(data)
+            $.post('/update-task-order', data, function (data, status) {
+                console.log(data, status);
+                var req = "/rename-task?old_name=" + id +"&new_name=" + new_name ;
+                $.get(req, function (data, status) {
+                    console.log("server Ret:" + data)
+                    window.location.replace("/?curr="+ (num_calanders));
+                });
+                
+            });
+
         }
         else{
             console.log('empty');

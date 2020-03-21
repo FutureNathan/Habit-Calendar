@@ -135,6 +135,11 @@ class Calendar:
         self.c.execute(q_string)
         self.conn.commit()
 
+    def renameTaskDb(self, old_name, new_name):
+        q_string = "ALTER TABLE '{}' RENAME TO '{}'".format(old_name, new_name)
+        self.c.execute(q_string)
+        self.conn.commit()
+
     def getTaskOrder(self):
         data = self.getSettings()
         try:
@@ -183,7 +188,6 @@ class Calendar:
             "complete": tasks_list.count(1)
         }
         return data
-
     # Function to convert dict keys and values to be embedded with the sql query used by the reset function
     def dictToString(self, data):
         q = ""
@@ -194,40 +198,3 @@ class Calendar:
         return q
 
     
-
-
-# a = Calander()
-# tables = a.getTableNames()
-# # # da = a.getTaskOrder()
-# # da =a.getTableNames()
-# # a.updateTaskOrder(da)
-# print(tables)
-# print(a.getTaskOrder())
-# data = a.getTaskOrder()
-
-# if(data == 0):
-#     print("empty")
-
-# a.removeFromTaskOrder('test2')
-# a.addtoTaskOrder('test2')
-
-# print(tables)
-# a.updateSettings("order", table_str)
-# a.populateSettings("order", table_str)
-# aa = a.getTodaysTask("Jan", 3)
-# print(aa)
-# # a.updateCalander("yolos", "Jan", 1, 1)
-# a.createCalander("cleaning")
-# print(a.getCalanderData('yolo'))
-# print(a.getTableNames())
-# a.deleteCalander('brushing')
-
-# # print(a.countTables())
-
-# a.updateSettings('year', '2021')
-# print(a.createCalander("brushings"))
-# # a.populateSettings(v,v)
-
-
-
-# print(a.getSettings())

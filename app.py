@@ -129,6 +129,20 @@ def updateTaskOrder():
     except:
         return "0"
 
+@app.route('/rename-task', methods=["GET", "POST"])
+def renameTask():
+    try:
+        old_name = request.args.get('old_name')
+        new_name = request.args.get('new_name')
+        print("renaming Tasks")
+        db.renameTaskDb(old_name, new_name)
+        print("Done")
+        return "1"
+    except Exception as e:
+        print(e)
+        return "0"
+
+
 def displaySchedule():
     schedule.clear()
     data = db.getSettings()
