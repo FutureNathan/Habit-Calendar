@@ -1,23 +1,22 @@
 $.keyboard.keyaction.enter = function( kb ) {
     kb.close( true );
-    console.log("enter")
     saveTask()
     return false;     
   };
 
 $.keyboard.keyaction.accept = function( kb ) {
     kb.close( true );
-    console.log("accept")
     saveTask()
     return false;    
 };
+
 function exitModal(){
     modal.style.display = "none";
 }
 
 function saveTask()
 {
-    data = document.getElementById("keyboard").value;
+    data = document.getElementById("save_keyboard").value;
     if(data !="")
     {
         console.log(data)
@@ -28,7 +27,19 @@ function saveTask()
         });
     }
     else{
-        console.log('empty')
+        rename_tag = document.getElementById("rename_input");
+        new_name   = rename_tag.value;
+        if(new_name !="")
+        {
+            id = rename_tag.getAttribute("placeholder");
+            console.log(id);
+            console.log(new_name);
+            
+        }
+        else{
+            console.log('empty');
+        }
+
     }
 
 }
@@ -43,6 +54,32 @@ var change_order = document.getElementsByClassName('menu-img');
 Array.from(change_order).forEach(function(element){
     element.addEventListener("click", changeOrder, false);   
 });
+
+var rename = document.getElementsByClassName('menu-text');
+Array.from(rename).forEach(function(element){
+    element.addEventListener("click", renameTask, false);   
+});
+
+var rename_modal = document.getElementById("rename");
+
+function exitRenameModal(){
+    rename_modal.style.display = "none";
+}
+
+function renameTask(){
+    rename_modal.style.display = "block";
+    var data = this.innerHTML;
+    place = document.getElementById('rename_input');
+    place_data = place.getAttribute("placeholder");
+    place.setAttribute("placeholder", data)
+    console.log(place_data)
+}
+
+function saveNewName(){
+    new_name = document.getElementById('rename_input');
+    data =new_name.innerHTML;
+    console.log(data)
+}
 
 function changeOrder(){
     var data  = this;
@@ -86,6 +123,7 @@ function deleteTask()
 
 var modal = document.getElementById("myModal");
 var btn = document.getElementById("new-habit-modal");
+
 btn.onclick = function() {
     modal.style.display = "block";
 }
@@ -117,3 +155,4 @@ function changeDisplayOff(){
         //window.location.replace("/?curr="+ (num_calanders));
     });
 }
+

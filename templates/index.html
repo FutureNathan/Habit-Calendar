@@ -147,7 +147,7 @@
         <div class="menu-box" >
             <div class="leftof-menu">
                 <img class ='menu-img' src='/static/assets/Habit-up-arrow.png' value ="{{item}}" id="{{item}}" >
-                <div class="menu-text"> {{item}}</div>
+                <div class="menu-text">{{item}}</div>
             </div>
             <div class='rightof-menu'>
                 <button id ='task-del' class="del-btn" value="{{item}}" >Delete</button>
@@ -158,7 +158,7 @@
         <div class="menu-box" >
             <div class="leftof-menu">
                 <img class ='menu-img' src='/static/assets/Habit-up-arrow.png' >
-                <div class="menu-text"> Display On</div>
+                <div class="disp-text"> Display On</div>
                 <input id ='disp_on_time' class="menu-input"  type="time"  value="{{settings[1][1]}}"> 
             </div>
             <div class='rightof-menu'>
@@ -169,7 +169,7 @@
         <div class="menu-box" >
             <div class="leftof-menu">
                 <img class ='menu-img' src='/static/assets/Habit-up-arrow.png' >
-                <div class="menu-text"> Display Off</div>
+                <div class="disp-text"> Display Off</div>
                 <input id ='disp_off_time' class="menu-input"  type="time"  value="{{settings[2][1]}}"> 
 
             </div>
@@ -183,13 +183,26 @@
 
     </div>
 </div>
+<div id="rename" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <div class="modal-body out">
+            <input  class= "text-box in" type="text" id="rename_input" placeholder="Enter New Task"> <br>
+            <button class="save-btn in" onclick="exitRenameModal()" >cancel</button>
+            <button class="save-btn in" onclick="saveNewName()" >Save</button>
+      </div>
+
+    </div>
+  </div>
+
     <div id="myModal" class="modal">
 
         <!-- Modal content -->
         <div class="modal-content">
 
           <div class="modal-body out">
-                <input  class= "text-box in" type="text" id="keyboard" placeholder="Enter New Task"> <br>
+                <input  class= "text-box in" type="text" id="save_keyboard" placeholder="Enter New Task"> <br>
                 <button class="save-btn in" onclick="exitModal()" >cancel</button>
                 <button class="save-btn in" onclick="saveTask()" >Save</button>
           </div>
