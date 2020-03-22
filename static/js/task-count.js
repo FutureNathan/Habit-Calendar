@@ -3,7 +3,7 @@ var bar = new ProgressBar.Circle(container, {
     easing: 'easeInOut',
     duration: 100,
     color: '#FFEA82',
-    trailColor: '#eee',
+    trailColor: '#334A52',
     trailWidth: 15,
     svgStyle: null
 });

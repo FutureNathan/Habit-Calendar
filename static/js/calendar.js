@@ -22,7 +22,7 @@ function fillCal(data, year) {
                 if (data[k - 1][month] == 1)
                     cell.innerHTML = "<div class='star'><img class='img-cls' id='star_" + months[month] + "_" + k + "' value = 'true' src = '/static/assets/star_gold.png' ><div class='star-text'>" + k + "</div></div>";
                 else //(data[k - 1][month] == 0)
-                    cell.innerHTML = "<div class='star'><img class='img-cls' id='star_" + months[month] + "_" + k + "' value = 'false' src = '/static/assets/star_white.png' ><div class='star-text'>" + k + "</div></div>";
+                    cell.innerHTML = "<div class='star'><img class='img-cls' id='star_" + months[month] + "_" + k + "' value = 'false' src = '/static/assets/star_dark.png' ><div class='star-text'>" + k + "</div></div>";
             }
         }
     }
@@ -53,7 +53,7 @@ function fillCal(data, year) {
 
 
         if (star_val === "true") {
-            document.getElementById(id).src = '/static/assets/star_white.png';
+            document.getElementById(id).src = '/static/assets/star_dark.png';
             document.getElementById(id).setAttribute("value", "false");
             updateCalander(c_name, id, "0")
         }

@@ -36,7 +36,7 @@
             
             if(current_calander === num_calanders){
                 document.getElementById("calender-table").style.display ='none';
-                document.getElementById("subtitle").innerHTML = "";
+                document.getElementById("subtitle").innerHTML = "settings";
 
                 document.getElementById('settings-form').style.display ='block';
                 CountTask();
@@ -77,7 +77,7 @@
                 current_calander = num_calanders;
                 document.getElementById("calender-table").style.display ='none';
                 document.getElementById("subtitle").innerHTML = "";
-
+                document.getElementById("subtitle").innerHTML = "settings";
                 document.getElementById('settings-form').style.display ='block'
             }
             else {
@@ -134,7 +134,7 @@
             else if(current_calander === num_calanders){
                     current_calander = 0;
                     document.getElementById("calender-table").style.display ='none';
-                    document.getElementById("subtitle").innerHTML = "";
+                    document.getElementById("subtitle").innerHTML = "settings";
                     document.getElementById('settings-form').style.display ='block'
                 }
                 scroll_state = 1
@@ -148,9 +148,10 @@
     <div class="header" style="width:1080px">
         <img class="left" src="/static/assets/Back Arrow.png" id="left_btn" onclick="back()">
 
-        <div class="c_enter" style="height: 50px;margin-bottom: 80px;">
-            <H1 class='in_text' style="height: 30px;margin-top: 0px;margin-bottom: 0px;">Good Habits</H1>
-            <H3 id="subtitle" class='in_text' style="height: 30px;margin-top: 50px; margin-bottom:50px;"> title</H3>
+        <div class="c_enter" style="height: 50px;margin-bottom: 80px; width:800px">
+            <H1  id="subtitle" class='in_text' style="margin-left:30px;height: 30px;margin-top: 0px;margin-bottom: 0px; text-align:center; padding:10px;">Good Habits</H1>
+
+            <H3 class='in_text' style="height: 50px;margin-top: 50px; margin-bottom:50px;"></H3>
         </div>
 
         <div class="circle" >
@@ -223,7 +224,7 @@
     <div id="rename" class="modal">
         <div class="modal-content">
         <div class="modal-body out">
-                <input  class= "text-box in" type="text" id="rename_input" placeholder="Enter New Task"> <br>
+                <input  class= "text-box in" type="text" id="rename_input" maxlength="12"> <br>
                 <button class="save-btn in" onclick="exitRenameModal()" >cancel</button>
                 <button class="save-btn in" onclick="saveNewName()" >Save</button>
         </div>
@@ -235,7 +236,7 @@
         <div class="modal-content">
 
           <div class="modal-body out">
-                <input  class= "text-box in" type="text" id="save_keyboard" placeholder="Enter New Task"> <br>
+                <input  class= "text-box in" type="text" id="save_keyboard" placeholder="Enter New Task" maxlength="12"> <br>
                 <button class="save-btn in" onclick="exitModal()" >cancel</button>
                 <button class="save-btn in" onclick="saveTask()" >Save</button>
           </div>
