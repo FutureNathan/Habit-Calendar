@@ -29,10 +29,13 @@ function saveTask()
     else{
         rename_tag = document.getElementById("rename_input");
         new_name   = rename_tag.value;
+        new_name   = new_name.replace(/ /g , '_');
         if(new_name !="")
         {
             curr_tasks = calanders;
             id = rename_tag.getAttribute("placeholder");
+            id = id.replace(/ /g , '_');
+
             console.log("---------------")
             console.log("old name:"+ id);
             console.log("new name:"+ new_name);
@@ -105,7 +108,6 @@ function changeOrder(){
     var data  = this;
     task_id   = data['id'];
     all_tasks = calanders;
-    
     if(task_id !=""){
         num_tasks = all_tasks.length;
 

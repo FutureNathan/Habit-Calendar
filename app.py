@@ -134,6 +134,7 @@ def renameTask():
     try:
         old_name = request.args.get('old_name')
         new_name = request.args.get('new_name')
+
         print("renaming Tasks")
         db.renameTaskDb(old_name, new_name)
         print("Done")

@@ -43,11 +43,13 @@
             }
             else {
                 populateCalander(calanders[current_calander]);
-                document.getElementById("subtitle").innerHTML = calanders[current_calander];   
+                name = calanders[current_calander]; 
+                name_sp = name.replace(/_/g , ' ');
+                document.getElementById("subtitle").innerHTML = name_sp;   
                 document.getElementById('settings-form').style.display ='none'
                 console.log(num_calanders);
             }
-
+            console.log("total:" + num_calanders +" current: "+ current_calander);
         }, false);
 
 
@@ -59,24 +61,28 @@
             });
         }
         function back(){
-            console.log(current_calander);
+            console.log(calanders[current_calander]+":"+ current_calander);
+            
             if(current_calander > 0){   
                 document.getElementById("calender-table").style.display ='table-row';
                 current_calander = current_calander - 1;
                 populateCalander(calanders[current_calander]);
-                document.getElementById("subtitle").innerHTML = calanders[current_calander];
+                name = calanders[current_calander]; 
+                name_sp = name.replace(/_/g , ' ');
+                document.getElementById("subtitle").innerHTML = name_sp;
 
                 document.getElementById('settings-form').style.display ='none'
             }
             else if(current_calander === 0){
-                current_calander = current_calander - 1;
+                current_calander = num_calanders;
                 document.getElementById("calender-table").style.display ='none';
                 document.getElementById("subtitle").innerHTML = "";
 
                 document.getElementById('settings-form').style.display ='block'
             }
             else {
-                current_calander = 2;
+                console.log("never?")
+                current_calander = num_calanders;
                 document.getElementById("calender-table").style.display ='table-row';
                 populateCalander(calanders[current_calander]);
                 document.getElementById("subtitle").innerHTML = calanders[current_calander];
@@ -86,33 +92,26 @@
             
         }
 
-        function next(){
-            console.log(current_calander);
-            if(current_calander < num_calanders-1){
-                    document.getElementById("calender-table").style.display ='table-row';
-                    current_calander = current_calander + 1;
-                    populateCalander(calanders[current_calander]);
-                    document.getElementById("subtitle").innerHTML = calanders[current_calander];
-
-                    document.getElementById('settings-form').style.display ='none'
-                }
-            else if(current_calander === num_calanders-1){ 
-                    current_calander = current_calander + 1;
-                    document.getElementById("calender-table").style.display ='none';
-                    document.getElementById("subtitle").innerHTML = "";
-
-                    document.getElementById('settings-form').style.display ='block'
-                }
-            else {
-                console.log("reset")
-                current_calander = 0;
-                document.getElementById("calender-table").style.display ='table-row';
-                populateCalander(calanders[current_calander]);
-                document.getElementById("subtitle").innerHTML = calanders[current_calander];
-
-                document.getElementById('settings-form').style.display ='none'
-            }
+        function next(){ 
+            console.log("total:" +  num_calanders +" current: "+  current_calander);
             
+            if(current_calander == num_calanders){
+                current_calander = 0;
+                document.getElementById("calender-table").style.display ='none';
+                document.getElementById("subtitle").innerHTML = "";
+                document.getElementById('settings-form').style.display ='block'
+            }
+            else if(current_calander < num_calanders){
+                    document.getElementById("calender-table").style.display ='table-row';  
+                    populateCalander(calanders[current_calander]);
+                    name = calanders[current_calander]; 
+                    name_sp = name.replace(/_/g , ' ');
+                    document.getElementById("subtitle").innerHTML = name_sp;
+                    document.getElementById('settings-form').style.display ='none'
+                    console.log("after" + current_calander)
+                    current_calander = current_calander + 1;
+                }
+
         }   
     </script>
 </head>
@@ -147,7 +146,7 @@
         <div class="menu-box" >
             <div class="leftof-menu">
                 <img class ='menu-img' src='/static/assets/Habit-up-arrow.png' value ="{{item}}" id="{{item}}" >
-                <div class="menu-text">{{item}}</div>
+                <div class="menu-text" value = '{{item}}'>{{item.replace('_', ' ')}}</div>
             </div>
             <div class='rightof-menu'>
                 <button id ='task-del' class="del-btn" value="{{item}}" >Delete</button>
