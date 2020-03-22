@@ -16,7 +16,7 @@
 .header {
     display: grid;
     grid-template-areas:
-    'l_eft c_top c_top c_top c_top c_top c_top  c_top c_top c_top c_top p_circle r_ight';
+    'l_eft c_top p_circle r_ight';
     margin: 0px;
   }
 
@@ -38,5 +38,5 @@
 .right{
     cursor: pointer;
     margin-top: 20px;
-    padding-left:20px;
+    padding-left:30px;
 }
