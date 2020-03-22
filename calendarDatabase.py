@@ -197,4 +197,8 @@ class Calendar:
             q = q + i +"=" + str(data[i])
         return q
 
-    
+    def resetDB(self):
+        tables = self.getTableNames()
+        for table in tables:
+            self.deleteCalander(table)
+

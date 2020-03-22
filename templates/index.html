@@ -94,7 +94,7 @@
 
         function next(){ 
             console.log("total:" +  num_calanders +" current: "+  current_calander);
-            if(scroll_state == 0){
+            if(scroll_state == 0 && num_calanders >1){
                 console.log("scroll")
                 if(current_calander < num_calanders){
                     current_calander = current_calander + 1;
@@ -105,7 +105,8 @@
                     document.getElementById("subtitle").innerHTML = name_sp;
                     document.getElementById('settings-form').style.display ='none'
                     console.log("after" + current_calander)
-                    current_calander = current_calander + 1;
+                    if(num_calanders>1)
+                        current_calander = current_calander + 1;
                 }
                 else if(current_calander === num_calanders){
                     current_calander = 0;
@@ -116,7 +117,8 @@
                     document.getElementById("subtitle").innerHTML = name_sp;
                     document.getElementById('settings-form').style.display ='none'
                     console.log("after" + current_calander)
-                    current_calander = current_calander + 1;
+                    if(num_calanders>1)
+                        current_calander = current_calander + 1;
                 }
             }
             else if(current_calander < num_calanders){
@@ -204,25 +206,32 @@
         
 
         <button id="new-habit-modal" class="menu-box">New Habit</button>
-
+        <button id="reset-button-modal" class="menu-box reset">Reset</button>
     </div>
 </div>
-<div id="rename" class="modal">
+    <div id="reset-modal" class="modal">
+        <div class="modal-content">
+        <div class="modal-body out">
+                <input  class= "text-box in" type="text" value="Are you sure you want to reset ?" disabled> <br>
+                <button class="save-btn in" onclick="exitReset()" >cancel</button>
+                <button class="save-btn reset" onclick="ResetDb()" >Reset</button>
+        </div>
 
-    <!-- Modal content -->
-    <div class="modal-content">
-      <div class="modal-body out">
-            <input  class= "text-box in" type="text" id="rename_input" placeholder="Enter New Task"> <br>
-            <button class="save-btn in" onclick="exitRenameModal()" >cancel</button>
-            <button class="save-btn in" onclick="saveNewName()" >Save</button>
-      </div>
-
+        </div>
     </div>
-  </div>
+
+    <div id="rename" class="modal">
+        <div class="modal-content">
+        <div class="modal-body out">
+                <input  class= "text-box in" type="text" id="rename_input" placeholder="Enter New Task"> <br>
+                <button class="save-btn in" onclick="exitRenameModal()" >cancel</button>
+                <button class="save-btn in" onclick="saveNewName()" >Save</button>
+        </div>
+
+        </div>
+    </div>
 
     <div id="myModal" class="modal">
-
-        <!-- Modal content -->
         <div class="modal-content">
 
           <div class="modal-body out">

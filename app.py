@@ -142,7 +142,15 @@ def renameTask():
     except Exception as e:
         print(e)
         return "0"
-
+        
+@app.route('/reset-db')
+def RESETDB():
+    try:
+        db.resetDB()
+        return "1"
+    except Exception as e:
+        print(e)
+        return "0"
 
 def displaySchedule():
     schedule.clear()

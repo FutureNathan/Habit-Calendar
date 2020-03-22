@@ -20,8 +20,6 @@
     margin-bottom: 10px;
     font-family: Roboto;
     font-size: 36px;
-
-
   }
 
 .leftof-menu{
@@ -116,4 +114,8 @@
     -ms-appearance:none;
     appearance: none;
     margin: -10px; 
+  }
+
+  .reset {
+    background-color: #AB296B;
   }

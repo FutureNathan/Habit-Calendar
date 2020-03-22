@@ -178,3 +178,24 @@ function changeDisplayOff(){
     });
 }
 
+var Resetmodal = document.getElementById("reset-modal");
+var Resetbtn = document.getElementById("reset-button-modal");
+
+Resetbtn.onclick = function() {
+    Resetmodal.style.display = "block";
+}
+
+function exitReset(){
+    Resetmodal.style.display = "none";
+}
+
+function ResetDb(){
+    console.log("reset")
+    var req = "/reset-db";
+    $.get(req, function (data, status) {
+        console.log("server Ret:" + data)
+        //window.location.replace("/?curr="+ (num_calanders));
+        window.location.replace("/?curr="+ (num_calanders));
+        window.location.reload(true);
+    });
+}
