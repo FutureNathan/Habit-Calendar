@@ -50,7 +50,8 @@ function fillCal(data, year) {
 
         console.log("star_id: " + id);
         c_name = document.getElementById('subtitle').innerHTML;
-
+        c_name = c_name.replace(/ /g , '_');
+        console.log("calander_name: " + c_name)
 
         if (star_val === "true") {
             document.getElementById(id).src = '/static/assets/star_dark.png';
