@@ -1,5 +1,4 @@
 from flask import Flask, render_template, flash, request, url_for, redirect, Response, jsonify
-from flask_socketio import SocketIO, emit, send
 from werkzeug.datastructures import ImmutableMultiDict
 from time import sleep
 import json
@@ -10,9 +9,6 @@ import threading
 from calendarDatabase import Calendar
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'secret!'
-socketio = SocketIO(app)
-
 db = Calendar()
 
 @app.route('/', methods=["GET","POST"])
@@ -185,7 +181,6 @@ def schedularThread():
 displaySchedule()
 
 if __name__ == '__main__':
-    # app.run(host='0.0.0.0',port = 80, threaded=True, debug=True)
     threading.Thread(target=schedularThread).start()
-    socketio.run(app, host='0.0.0.0', port=80, debug=True)
+    app.run(host='0.0.0.0',port = 80, threaded=True, debug=True)
     
