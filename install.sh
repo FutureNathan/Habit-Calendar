@@ -6,7 +6,7 @@ git clone https://github.com/FutureNathan/Habit-Calendar.git
 
 pip3 install -r Habit-Calendar/requirements.txt
 
-cp Habit-Calendar/Habit-Calendar-Server.service /etc/systemd/system/Habit-Calendar-Servers.service
+cp Habit-Calendar/Habit-Calendar-Server.service /etc/systemd/system/Habit-Calendar-Server.service
 cp -R Habit-Calendar /var/Habit-Calendar
 
 systemctl enable Habit-Calendar-Server.service
