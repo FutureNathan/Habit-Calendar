@@ -25,9 +25,6 @@ psutil==5.5.1
 
 pyOpenSSL==19.0.0
 pyserial==3.4
-python-apt==1.8.4.1
-python-engineio==3.11.2
-python-socketio==4.4.0
 
 schedule==0.6.0
 
