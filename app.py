@@ -165,7 +165,7 @@ def displaySchedule():
 def displayOn():
     cmd = "vcgencmd display_power 1"
     commandExec(cmd)
-    cmd = "sudo ./var/var/Habit-Calendar/updater.sh"
+    cmd = "bash updater.sh"
     commandExec(cmd)
 
 def displayOff():
