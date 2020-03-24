@@ -181,7 +181,7 @@ def schedularThread():
         sleep(1)
 
 displaySchedule()
-
+displayOn()
 if __name__ == '__main__':
     threading.Thread(target=schedularThread).start()
     app.run(host='0.0.0.0',port = 80, threaded=True, debug=True)
