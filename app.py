@@ -6,7 +6,7 @@ import json
 import subprocess
 import schedule
 import threading
-#test
+
 from calendarDatabase import Calendar
 
 app = Flask(__name__)
@@ -164,6 +164,8 @@ def displaySchedule():
 
 def displayOn():
     cmd = "vcgencmd display_power 1"
+    commandExec(cmd)
+    cmd = "sudo ./var/var/Habit-Calendar/updater.sh"
     commandExec(cmd)
 
 def displayOff():

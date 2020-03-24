@@ -3,7 +3,7 @@ import time
 import datetime
 from calendar import monthrange
 
-database_dir = '/home/pi/Habit-Calendar/habit-calendar.db'
+database_dir = '/var/Habit-Calendar/habit-calendar.db'
 months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
             "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
         ]
@@ -188,6 +188,7 @@ class Calendar:
             "complete": tasks_list.count(1)
         }
         return data
+        
     # Function to convert dict keys and values to be embedded with the sql query used by the reset function
     def dictToString(self, data):
         q = ""
