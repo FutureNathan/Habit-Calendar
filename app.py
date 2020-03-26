@@ -10,7 +10,7 @@ from calendarDatabase import Calendar
 
 app = Flask(__name__)
 db = Calendar()
-version = "Local V1.6"
+version = "Local V0.7"
 
 @app.route('/', methods=["GET","POST"])
 def index():
