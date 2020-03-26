@@ -19,7 +19,7 @@ class Calendar:
     def createCalander(self, name):
         name = name.replace(" ", "_")
         try:
-            q_string = "CREATE TABLE {} (count INTEGER, Jan INTEGER, Feb INTEGER, Mar INTEGER, Apr INTEGER, May INTEGER, Jun INTEGER, Jul INTEGER, Aug INTEGER, Sep INTEGER, Oct INTEGER, Nov INTEGER, Dec INTEGER )".format(name)
+            q_string = "CREATE TABLE '{}' (count INTEGER, Jan INTEGER, Feb INTEGER, Mar INTEGER, Apr INTEGER, May INTEGER, Jun INTEGER, Jul INTEGER, Aug INTEGER, Sep INTEGER, Oct INTEGER, Nov INTEGER, Dec INTEGER )".format(name)
             self.c.execute(q_string) 
             self.conn.commit()
             self.resetTable(name)
@@ -31,7 +31,7 @@ class Calendar:
 
     # function to return the calander star data for a given calander
     def getCalanderData(self, name):
-        q_string = "SELECT * FROM {}".format(name)
+        q_string = "SELECT * FROM '{}'".format(name)
         self.c.row_factory = None
         self.c.execute(q_string)
         data = self.c.fetchall()
@@ -52,7 +52,7 @@ class Calendar:
     # function to update a given calander by name, month and day
     def updateCalander(self, name, month, day, value):
         year = int(self.getSettings()[0][1])
-        q_string = "UPDATE {} SET {}={} WHERE count={}".format(name, month, value, day)
+        q_string = "UPDATE '{}' SET {}={} WHERE count={}".format(name, month, value, day)
         self.c.execute(q_string)
         self.conn.commit()
 
@@ -63,7 +63,7 @@ class Calendar:
         
 
     def getSingleEntry(self, name, month, day):
-        q_string = "SELECT {} FROM {} WHERE count = {}".format(month, name, day)
+        q_string = "SELECT {} FROM '{}' WHERE count = {}".format(month, name, day)
         self.c.row_factory = None
         self.c.execute(q_string)
         data = self.c.fetchall()
@@ -73,7 +73,7 @@ class Calendar:
 
     # function to delete a calander table by its name
     def deleteCalander(self, name):
-        q_string = "DROP TABLE {}".format(name)
+        q_string = "DROP TABLE '{}'".format(name)
         self.c.execute(q_string)
         self.conn.commit()
         self.removeFromTaskOrder(name)
@@ -108,7 +108,7 @@ class Calendar:
         print(year)
         for day in range(0,31):
             row = {}
-            q_string = "INSERT INTO {} (count) VALUES({})".format(name, day+1)
+            q_string = "INSERT INTO '{}' (count) VALUES({})".format(name, day+1)
             self.c.execute(q_string)
             self.conn.commit()
             for month in range(0,12):
@@ -117,7 +117,7 @@ class Calendar:
                     row[months[month]] = 0
             # print("{} : {}".format(day+1, row))
             data = self.dictToString(row)
-            q_string = "UPDATE {} SET {} WHERE count = {}".format(name, data, day+1)
+            q_string = "UPDATE '{}' SET {} WHERE count = {}".format(name, data, day+1)
             self.c.execute(q_string)
             self.conn.commit()
 
@@ -208,4 +208,3 @@ class Calendar:
         tables = self.getTableNames()
         for table in tables:
             self.deleteCalander(table)
-
