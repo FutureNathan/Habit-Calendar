@@ -27,6 +27,10 @@ function CountTask(){
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = monthNames[parseInt(String(today.getMonth() + 1).padStart(2, '0')) - 1];
 
+    day_id = "star_"+ mm + "_" + dd
+    // console.log("counting", day_id)
+    // console.log(calanders)
+
     var req = "/get-completion?month=" + mm +"&day=" + dd;
     $.get(req, function (data, status) {
         total = data["total"];
@@ -36,7 +40,7 @@ function CountTask(){
         complete = parseInt(complete)
         total    = parseInt(total);
 
-        console.log(total, complete, incomlete)
+        // console.log(total, complete, incomlete)
 
         bar.animate(-(complete/total))
         bar.setText(complete + "/" + total)
@@ -46,6 +50,20 @@ function CountTask(){
         {
             document.getElementById("bar-text").style.color = "#FFC700";
             path.setAttribute("stroke", "#FFC700");
+
+            document.getElementById(day_id).src = '/static/assets/star_streak.png';
+            document.getElementById(day_id).setAttribute("value", "true");
+            
+            setTimeout(function() {
+                
+                var req = "/updatestreak?monthday=" + day_id;
+                $.get(req, function (data, status) {
+                });
+
+            }, 1000)
+            
+
+                
         }
         // window.location.replace("/?curr="+ (num_calanders-1));
     });
@@ -66,7 +84,7 @@ setInterval(function () {
         complete = parseInt(complete)
         total    = parseInt(total);
 
-        console.log(total, complete, incomlete)
+        // console.log(total, complete, incomlete)
 
         bar.animate(-(complete/total))
         bar.setText(complete + "/" + total)

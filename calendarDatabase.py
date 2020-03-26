@@ -56,6 +56,12 @@ class Calendar:
         self.c.execute(q_string)
         self.conn.commit()
 
+    def updateStreakDb(self, month, day):
+        tasks = self.getTaskOrder()
+        for i in tasks:
+            self.updateCalander(i, month, day, 9)
+        
+
     def getSingleEntry(self, name, month, day):
         q_string = "SELECT {} FROM {} WHERE count = {}".format(month, name, day)
         self.c.row_factory = None
@@ -185,7 +191,7 @@ class Calendar:
         data = {
             "total": len(tables),
             "incomplete": tasks_list.count(0),
-            "complete": tasks_list.count(1)
+            "complete": tasks_list.count(1) + tasks_list.count(9)
         }
         return data
         

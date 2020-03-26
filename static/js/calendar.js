@@ -3,7 +3,9 @@ function fillCal(data, year) {
     months = moment.monthsShort();
     //year = 2021
     //data = [[1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1], [1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1], [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1], [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1], [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1], [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1], [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1], [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1], [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1], [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1], [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1], [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1], [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1], [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1], [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1], [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1], [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1], [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1], [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1], [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1], [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1], [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1], [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1], [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1], [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1], [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1], [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1], [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1], [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1], [1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1], [1, 1, 1, 1, 1, 1, 1]];
-
+    console.log("type", typeof data);
+    console.log("type", typeof data[0][3]);
+    console.log("data", data[0][3]);
     var table = document.createElement("TABLE");
     var row = table.insertRow(-1);
     for (var j = 0; j < months.length; j++) {
@@ -19,7 +21,9 @@ function fillCal(data, year) {
             days_in_month = moment([year, month]).daysInMonth();
             if (k <= days_in_month) {
                 //cell.innerHTML = "<div class='star'><img class='img-cls' id='star_" + months[month] + "_" + k + "' value = 'true' src = '/static/assets/star_gold.png' ><div class='star-text'>" + k + "</div></div>";
-                if (data[k - 1][month] == 1)
+                if(data[k - 1][month] == 9 )
+                    cell.innerHTML = "<div class='star'><img class='img-cls' id='star_" + months[month] + "_" + k + "' value = 'true' src = '/static/assets/star_streak.png' ><div class='star-text'>" + k + "</div></div>";                     
+                else if (data[k - 1][month] == 1)
                     cell.innerHTML = "<div class='star'><img class='img-cls' id='star_" + months[month] + "_" + k + "' value = 'true' src = '/static/assets/star_gold.png' ><div class='star-text'>" + k + "</div></div>";
                 else //(data[k - 1][month] == 0)
                     cell.innerHTML = "<div class='star'><img class='img-cls' id='star_" + months[month] + "_" + k + "' value = 'false' src = '/static/assets/star_dark.png' ><div class='star-text'>" + k + "</div></div>";
@@ -51,7 +55,7 @@ function fillCal(data, year) {
         console.log("star_id: " + id);
         c_name = document.getElementById('subtitle').innerHTML;
         c_name = c_name.replace(/ /g , '_');
-        console.log("calander_name: " + c_name)
+        // console.log("calander_name: " + c_name)
 
         if (star_val === "true") {
             document.getElementById(id).src = '/static/assets/star_dark.png';

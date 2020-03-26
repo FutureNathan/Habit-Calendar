@@ -52,6 +52,20 @@ def updateCalanderApi():
         print(e)
         return "0"
 
+@app.route('/updatestreak', methods=["GET","POST"])
+def updateStreak():
+    try:
+        month_day = request.args.get('monthday')
+        data  = month_day.split('_')
+        month = data[1]
+        day   = int(data[2])
+        print(month, day)
+        db.updateStreakDb(month, day)
+        return "1"
+    except Exception as e:
+        print(e)
+        return "0"
+
 @app.route('/create-task', methods=["GET","POST"])
 def createTask():
     try:
@@ -181,7 +195,7 @@ def schedularThread():
         sleep(1)
 
 displaySchedule()
-displayOn()
+# displayOn()
 if __name__ == '__main__':
     threading.Thread(target=schedularThread).start()
     app.run(host='0.0.0.0',port = 80, threaded=True, debug=True)
