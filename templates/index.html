@@ -11,7 +11,7 @@
     <link href="{{url_for('static',filename = 'css/loading-bar.css')}}" rel="stylesheet">
     <link href="{{url_for('static',filename = 'css/modal-style.css')}}" rel="stylesheet">
     <link href="{{url_for('static',filename = 'css/keyboard-dark.css')}}" rel="stylesheet">
-
+    <link href="{{url_for('static',filename = 'css/notification-style.css')}}" rel="stylesheet">
     
 
     <link rel="icon" href="{{url_for('static',filename = 'assets/favicon.PNG')}}" sizes="16x16">
@@ -208,8 +208,10 @@
         <button id="new-habit-modal" class="menu-box">New Habit</button>
         <button id="reset-button-modal" class="menu-box reset">Reset</button>
         <button class="menu-box reset">Version: {{version}}</button>
+        
     </div>
 </div>
+    
     <div id="reset-modal" class="modal">
         <div class="modal-content">
         <div class="modal-body out">
@@ -243,6 +245,7 @@
 
         </div>
       </div>
+      {% include 'notification.html' %}
 
     <script type="text/javascript" src="{{url_for('static',filename = 'js/onscreen-keyboard.js')}}"></script>
     <script type="text/javascript" src="{{url_for('static',filename = 'js/task-count.js')}}"></script>

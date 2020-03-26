@@ -1,0 +1,31 @@
+
+<div id="noti" class="noti-modal">
+    <div class="noti-modal-content">
+        <div class="noti-header">
+            <span class="noti-close">&times;</span>
+            <h2>What's new</h2>
+          </div>
+          <div class="noti-body">
+            <p>Some text in the Modal Body</p>
+            <p>Some other text...</p>
+          </div>
+    </div>
+</div>
+
+
+<script>
+    var noti_modal = document.getElementById("noti");
+    var noti_span = document.getElementsByClassName("noti-close")[0];
+
+    noti_span.onclick = function() {
+        noti_modal.style.display = "none";
+    }
+
+    function updateNotification(state)
+    {
+        if(state)
+            noti_modal.style.display = "block";
+        else
+            noti_modal.style.display = "none";
+    }
+</script>
