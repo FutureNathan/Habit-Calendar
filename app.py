@@ -174,6 +174,7 @@ def displaySchedule():
     schedule.every().day.at(d_off).do(displayOff)
 
 def displayOn():
+    sleep(8)
     cmd = "vcgencmd display_power 1"
     commandExec(cmd)
     cmd = "bash updater.sh"
@@ -195,9 +196,9 @@ def schedularThread():
         schedule.run_pending()
         sleep(1)
 
-sleep(4)
 displaySchedule()
-displayOn()
+threading.Thread(target=displayOn).start()
+
 if __name__ == '__main__':
     threading.Thread(target=schedularThread).start()
     app.run(host='0.0.0.0',port = 80, threaded=True, debug=True)
