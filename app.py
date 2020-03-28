@@ -174,7 +174,7 @@ def displaySchedule():
     schedule.every().day.at(d_off).do(displayOff)
 
 def displayOn():
-    sleep(8)
+    sleep(15)
     cmd = "vcgencmd display_power 1"
     commandExec(cmd)
     cmd = "bash updater.sh"
