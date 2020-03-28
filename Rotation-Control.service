@@ -1,0 +1,17 @@
+[Unit]
+Description=Habit Calander Webserver
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=root
+WorkingDirectory=/var/Habit-Calendar
+ExecStart=/usr/bin/env python3 /var/Habit-Calendar/rotationControl.py
+TimeoutStopSec = 5
+
+[Install]
+WantedBy=multi-user.target
+
